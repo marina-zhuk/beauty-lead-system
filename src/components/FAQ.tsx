@@ -1,15 +1,19 @@
 const questions = [
   {
-    question: "Это готовая CRM?",
-    answer: "Нет. Это первая версия MVP: лендинг, форма и API route для проверки заявки.",
+    question: "Можно ли адаптировать под мой салон?",
+    answer: "Да. Тексты, услуги, поля формы и визуальный стиль можно адаптировать под салон, частного мастера или студию.",
   },
   {
-    question: "Telegram и Google Sheets уже подключены?",
-    answer: "В этой версии нет. Переменные окружения подготовлены для следующих этапов.",
+    question: "Куда приходят заявки?",
+    answer: "В Telegram владельца или администратора. Данные заявки приходят одним сообщением.",
   },
   {
-    question: "Можно ли деплоить на Vercel?",
-    answer: "Да. Проект использует стандартный Next.js App Router и не требует отдельного сервера.",
+    question: "Нужна ли сложная CRM?",
+    answer: "Для MVP не обязательно. На первом этапе достаточно формы и Telegram-уведомлений, чтобы не терять заявки.",
+  },
+  {
+    question: "Можно ли потом добавить таблицу?",
+    answer: "Да. Следующим этапом можно подключить Google Sheets через Apps Script, чтобы сохранять заявки в таблицу.",
   },
 ];
 
@@ -17,7 +21,7 @@ export function FAQ() {
   return (
     <section className="bg-white px-5 py-12">
       <div className="mx-auto max-w-4xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-berry">FAQ</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">FAQ</p>
         <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">Частые вопросы</h2>
         <div className="mt-8 divide-y divide-ink/10 rounded-lg border border-ink/10 bg-cream">
           {questions.map((item) => (

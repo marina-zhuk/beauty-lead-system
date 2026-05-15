@@ -1,6 +1,8 @@
-# Beauty Lead System
+# Beauty Booking System
 
-Мини-система заявок для салона красоты или частного beauty-мастера.
+Портфолио-MVP digital-услуги для владельцев beauty-бизнеса: лендинг, demo-форма заявки и Telegram-уведомления.
+
+Главная идея: клиент оставляет заявку на сайте, а владелец сразу получает ее в Telegram.
 
 ## Текущая версия
 
@@ -8,19 +10,19 @@
 - TypeScript;
 - Tailwind CSS;
 - Zod-валидация;
-- лендинг с секциями Hero, Services, Benefits, Process, LeadForm, Reviews, FAQ и Footer;
-- форма заявки;
+- лендинг для продажи мини-системы заявок владельцам beauty-бизнеса;
+- demo-форма заявки;
 - API route `POST /api/lead`;
 - Telegram-уведомление владельцу после успешной валидации заявки;
 - состояния формы: idle, loading, success, error;
 - `.env.local.example`.
 
-В текущей версии API валидирует данные, отправляет Telegram-уведомление и возвращает `success/error`.
-Google Cloud и Google Sheets API не используются.
+API валидирует данные, отправляет Telegram-уведомление и возвращает `success/error`.
+Google Sheets пока не подключен, переменная под Apps Script оставлена для следующего этапа.
 
 ## Документация
 
-Вся проектная документация лежит в [docs](docs/README.md):
+Проектная документация лежит в [docs](docs/README.md):
 
 - [идея и аудитория](docs/project-brief.md);
 - [состав MVP](docs/mvp-scope.md);
@@ -76,9 +78,9 @@ TELEGRAM_CHAT_ID=
 GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
 ```
 
-`GOOGLE_APPS_SCRIPT_WEBHOOK_URL` сейчас не обязателен. Если он пустой, проект все равно работает через Telegram.
+`GOOGLE_APPS_SCRIPT_WEBHOOK_URL` сейчас не обязателен. Если он пустой, проект работает через Telegram.
 
-`.env.local` уже закрыт в `.gitignore` правилом `.env*.local`.
+`.env.local` закрыт в `.gitignore` правилом `.env*.local`.
 
 ## Проверка
 
@@ -86,4 +88,10 @@ GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
 npm run build
 ```
 
-Форму можно проверить на главной странице: пустая форма должна показать ошибки, заполненная форма с настроенным Telegram должна отправить уведомление и показать сообщение об успешной отправке.
+Форму можно проверить на главной странице: пустая форма должна показать ошибки, заполненная форма с настроенным Telegram должна отправить уведомление и показать success-сообщение.
+
+Telegram test endpoint:
+
+```text
+GET /api/telegram-test
+```

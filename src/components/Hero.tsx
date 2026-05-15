@@ -1,56 +1,66 @@
 export function Hero() {
+  const leadRows = [
+    ["Услуга", "Маникюр"],
+    ["Клиент", "Анна"],
+    ["Время", "сегодня 16:30"],
+    ["Статус", "отправлено в Telegram"],
+  ];
+
   return (
-    <section className="px-5 py-10 sm:py-14 lg:py-20">
+    <section className="px-5 pb-14 pt-10 sm:pt-14 lg:pb-20 lg:pt-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
-          <p className="mb-4 inline-flex rounded-full border border-berry/20 bg-white px-4 py-2 text-sm font-medium text-berry">
-            Demo MVP для beauty-бизнеса
+          <p className="mb-5 inline-flex rounded-full border border-accent/20 bg-white px-4 py-2 text-sm font-medium text-accent">
+            Beauty Booking System
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-ink sm:text-5xl lg:text-6xl">
-            Beauty Lead System для записи клиентов без потерянных заявок
+          <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
+            Мини-система заявок для beauty-мастеров и салонов
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-ink/70">
-            Чистый лендинг с формой заявки для мастера или салона. Клиент выбирает услугу,
-            оставляет удобное время и сразу видит статус отправки.
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70">
+            Лендинг, форма записи и Telegram-уведомления, чтобы заявки не терялись в переписках.
+            Клиент оставляет заявку на сайте, а владелец сразу видит ее в Telegram.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#lead-form"
-              className="inline-flex min-h-12 items-center justify-center rounded-md bg-berry px-6 text-base font-semibold text-white shadow-soft transition hover:bg-berry/90"
+              className="inline-flex min-h-12 items-center justify-center rounded-md bg-accent px-6 text-base font-semibold text-white shadow-soft transition hover:bg-accent/90"
             >
-              Записаться
+              Посмотреть демо заявки
             </a>
             <a
-              href="#services"
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-ink/15 bg-white px-6 text-base font-semibold text-ink transition hover:border-berry/35 hover:text-berry"
+              href="#included"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-ink/15 bg-white px-6 text-base font-semibold text-ink transition hover:border-accent/35 hover:text-accent"
             >
-              Посмотреть услуги
+              Что входит
             </a>
           </div>
         </div>
 
         <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-soft">
-          <div className="rounded-md bg-petal p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-berry">
-              Сегодня в записи
-            </p>
+          <div className="rounded-md bg-cream p-5">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
+                Новая заявка
+              </p>
+              <span className="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold text-moss">
+                Telegram
+              </span>
+            </div>
             <div className="mt-5 space-y-3">
-              {["Маникюр с покрытием", "Коррекция и окрашивание бровей", "Уход за лицом"].map(
-                (item, index) => (
-                  <div
-                    className="flex items-center justify-between rounded-md bg-white px-4 py-3"
-                    key={item}
-                  >
-                    <span className="font-medium text-ink">{item}</span>
-                    <span className="text-sm text-moss">{10 + index * 2}:30</span>
-                  </div>
-                ),
-              )}
+              {leadRows.map(([label, value]) => (
+                <div
+                  className="grid gap-1 rounded-md border border-ink/10 bg-white px-4 py-3 sm:grid-cols-[120px_1fr]"
+                  key={label}
+                >
+                  <span className="text-sm text-ink/55">{label}</span>
+                  <span className="font-medium text-ink">{value}</span>
+                </div>
+              ))}
             </div>
           </div>
           <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-md border border-ink/10 p-4">
-              <p className="text-2xl font-semibold text-berry">24/7</p>
+              <p className="text-2xl font-semibold text-accent">24/7</p>
               <p className="mt-1 text-ink/65">прием заявок</p>
             </div>
             <div className="rounded-md border border-ink/10 p-4">

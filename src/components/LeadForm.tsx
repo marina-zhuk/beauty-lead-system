@@ -74,7 +74,7 @@ export function LeadForm() {
       }
 
       setStatus("success");
-      setMessage("Заявка отправлена. Мы свяжемся с вами для подтверждения записи.");
+      setMessage("Демо-заявка отправлена. Проверьте Telegram владельца.");
       setForm(initialForm);
       setErrors({});
     } catch {
@@ -84,19 +84,26 @@ export function LeadForm() {
   }
 
   return (
-    <section className="bg-white px-5 py-12" id="lead-form">
+    <section className="px-5 py-14" id="lead-form">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-berry">
-            Форма заявки
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
+            Demo lead form
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Запись без лишних сообщений
+            Попробуйте демо-заявку
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Клиент оставляет контакты и желаемое время. API route проверяет данные через Zod и
-            возвращает понятный результат.
+            Заполните форму как тестовую заявку. Она придет в Telegram владельцу и покажет,
+            как работает сценарий: сайт, форма и уведомление.
           </p>
+          <div className="mt-6 rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
+            <p className="font-semibold text-ink">Это не запись в реальный салон</p>
+            <p className="mt-2 leading-7 text-ink/65">
+              Форма демонстрирует digital-систему для beauty-бизнеса: какие данные собираются
+              и как быстро владелец получает заявку.
+            </p>
+          </div>
         </div>
 
         <form className="rounded-lg border border-ink/10 bg-cream p-5 shadow-soft" onSubmit={handleSubmit}>
@@ -104,32 +111,32 @@ export function LeadForm() {
             <label className="grid gap-2">
               <span className="text-sm font-medium text-ink">Имя</span>
               <input
-                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-berry"
+                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="name"
                 onChange={(event) => updateField("name", event.target.value)}
                 placeholder="Анна"
                 value={form.name}
               />
-              {errors.name ? <span className="text-sm text-berry">{errors.name}</span> : null}
+              {errors.name ? <span className="text-sm text-accent">{errors.name}</span> : null}
             </label>
 
             <label className="grid gap-2">
               <span className="text-sm font-medium text-ink">Телефон</span>
               <input
-                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-berry"
+                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="phone"
                 onChange={(event) => updateField("phone", event.target.value)}
                 placeholder="+7 999 123-45-67"
                 type="tel"
                 value={form.phone}
               />
-              {errors.phone ? <span className="text-sm text-berry">{errors.phone}</span> : null}
+              {errors.phone ? <span className="text-sm text-accent">{errors.phone}</span> : null}
             </label>
 
             <label className="grid gap-2 sm:col-span-2">
               <span className="text-sm font-medium text-ink">Услуга</span>
               <select
-                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-berry"
+                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="service"
                 onChange={(event) => updateField("service", event.target.value)}
                 value={form.service}
@@ -141,13 +148,13 @@ export function LeadForm() {
                   </option>
                 ))}
               </select>
-              {errors.service ? <span className="text-sm text-berry">{errors.service}</span> : null}
+              {errors.service ? <span className="text-sm text-accent">{errors.service}</span> : null}
             </label>
 
             <label className="grid gap-2">
               <span className="text-sm font-medium text-ink">Желаемая дата</span>
               <input
-                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-berry"
+                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="preferredDate"
                 onChange={(event) => updateField("preferredDate", event.target.value)}
                 type="date"
@@ -158,7 +165,7 @@ export function LeadForm() {
             <label className="grid gap-2">
               <span className="text-sm font-medium text-ink">Желаемое время</span>
               <input
-                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-berry"
+                className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="preferredTime"
                 onChange={(event) => updateField("preferredTime", event.target.value)}
                 type="time"
@@ -169,7 +176,7 @@ export function LeadForm() {
             <label className="grid gap-2 sm:col-span-2">
               <span className="text-sm font-medium text-ink">Комментарий</span>
               <textarea
-                className="min-h-28 resize-y rounded-md border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-berry"
+                className="min-h-28 resize-y rounded-md border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-accent"
                 name="comment"
                 onChange={(event) => updateField("comment", event.target.value)}
                 placeholder="Например: хочу вечернее время после 18:00"
@@ -181,7 +188,7 @@ export function LeadForm() {
           {message ? (
             <p
               className={`mt-4 rounded-md px-4 py-3 text-sm ${
-                status === "success" ? "bg-moss/10 text-moss" : "bg-berry/10 text-berry"
+                status === "success" ? "bg-moss/10 text-moss" : "bg-accent/10 text-accent"
               }`}
             >
               {message}
@@ -189,11 +196,11 @@ export function LeadForm() {
           ) : null}
 
           <button
-            className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-berry px-6 font-semibold text-white transition hover:bg-berry/90 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+            className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-accent px-6 font-semibold text-white transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
             disabled={status === "loading"}
             type="submit"
           >
-            {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+            {status === "loading" ? "Отправляем..." : "Оставить демо-заявку"}
           </button>
         </form>
       </div>

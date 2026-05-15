@@ -1,26 +1,26 @@
 const steps = [
   {
-    title: "Клиент оставляет заявку",
-    text: "Заполняет форму на лендинге и указывает желаемую услугу.",
+    title: "Клиент заполняет форму",
+    text: "Выбирает услугу, оставляет телефон и указывает удобное время для связи.",
   },
   {
-    title: "Владелец получает данные",
-    text: "В первой версии API проверяет заявку и возвращает результат отправки.",
+    title: "Telegram получает заявку",
+    text: "Данные проходят проверку и приходят владельцу одним сообщением в Telegram.",
   },
   {
-    title: "Заявка готова к обработке",
-    text: "Структура уже подготовлена для следующих этапов с Telegram и Google Sheets.",
+    title: "Владелец связывается с клиентом",
+    text: "Можно быстро подтвердить запись, уточнить детали или предложить другое время.",
   },
 ];
 
 export function Process() {
   return (
-    <section className="px-5 py-12">
+    <section className="bg-white px-5 py-14">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-berry">Процесс</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">How it works</p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Три шага от интереса до заявки
+            Три шага от интереса до заявки в Telegram
           </h2>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
