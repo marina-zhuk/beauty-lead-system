@@ -85,12 +85,27 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!googleAppsScriptResult.ok) {
+      return NextResponse.json(
+        {
+          success: true,
+          message:
+            "Заявка отправлена в Telegram, но не сохранилась в Google Sheets. Проверьте Web App URL и deploy Apps Script.",
+          lead,
+          telegramDelivered: true,
+          googleSheetsSynced: false,
+        },
+        { status: 202 },
+      );
+    }
+
     return NextResponse.json(
       {
         success: true,
         message: "Заявка отправлена. Проверьте Telegram владельца.",
         lead,
         telegramDelivered: true,
+        googleSheetsSynced: !googleAppsScriptResult.skipped,
       },
       { status: 201 },
     );

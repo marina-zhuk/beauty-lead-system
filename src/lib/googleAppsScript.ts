@@ -47,7 +47,7 @@ export async function sendLeadToGoogleAppsScript(
         "Content-Type": "application/json",
       },
       body: JSON.stringify(lead),
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(30000),
     });
 
     if (!response.ok) {
@@ -69,6 +69,7 @@ export async function sendLeadToGoogleAppsScript(
       return { ok: false, reason: "invalid_response", status: response.status };
     }
 
+    console.info("[google-apps-script] Lead synced successfully");
     return { ok: true };
   } catch (error) {
     console.error("[google-apps-script] Failed to sync lead:", getErrorMessage(error));
