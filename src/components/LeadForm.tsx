@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-import { leadSchema, type LeadInput } from "@/lib/lead-schema";
+import { getTodayDateString, leadSchema, type LeadInput } from "@/lib/lead-schema";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -29,6 +29,7 @@ export function LeadForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Partial<Record<keyof LeadInput, string>>>({});
+  const todayDate = getTodayDateString();
 
   function updateField(field: keyof LeadInput, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -49,6 +50,7 @@ export function LeadForm() {
         name: fieldErrors.name?.[0],
         phone: fieldErrors.phone?.[0],
         service: fieldErrors.service?.[0],
+        preferredDate: fieldErrors.preferredDate?.[0],
       });
       setStatus("error");
       setMessage("Заполните обязательные поля.");
@@ -74,7 +76,7 @@ export function LeadForm() {
       }
 
       setStatus("success");
-      setMessage("Демо-заявка отправлена. Проверьте Telegram владельца.");
+      setMessage(data.message ?? "Демо-заявка отправлена. Проверьте Telegram владельца.");
       setForm(initialForm);
       setErrors({});
     } catch {
@@ -155,11 +157,13 @@ export function LeadForm() {
               <span className="text-sm font-medium text-ink">Желаемая дата</span>
               <input
                 className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
+                min={todayDate}
                 name="preferredDate"
                 onChange={(event) => updateField("preferredDate", event.target.value)}
                 type="date"
                 value={form.preferredDate ?? ""}
               />
+              {errors.preferredDate ? <span className="text-sm text-accent">{errors.preferredDate}</span> : null}
             </label>
 
             <label className="grid gap-2">

@@ -4,8 +4,9 @@
 
 1. API route принимает данные формы.
 2. Валидирует данные через Zod.
-3. Отправляет Telegram-уведомление.
-4. Возвращает пользователю `success`.
+3. Если задан `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`, отправляет заявку в Google Apps Script Web App.
+4. Отправляет Telegram-уведомление владельцу.
+5. Возвращает пользователю результат.
 
 ## Telegram
 
@@ -28,13 +29,24 @@ TELEGRAM_CHAT_ID=
 
 ## Google Apps Script
 
-Переменная `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` оставлена в `.env.local.example` для будущего сценария без Google Cloud.
+Google Sheets подключается через Google Apps Script Web App без Google Cloud.
 
-В текущей версии она не используется. Если переменная пустая, проект все равно работает через Telegram.
+Переменная окружения:
+
+```env
+GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
+```
+
+Поведение:
+
+1. Если webhook URL пустой, синхронизация с Google Sheets пропускается.
+2. Если webhook URL задан, API отправляет валидную заявку JSON-запросом.
+3. Если Google Apps Script временно недоступен, ошибка логируется, но Telegram-уведомление все равно отправляется.
+4. Если Telegram недоступен, но Google Sheets сохранил заявку, API возвращает `202` и показывает пользователю понятное сообщение.
 
 ## Google Cloud
 
-Google Cloud и Google Sheets API в текущем MVP не используются.
+Google Cloud, Service Account, private key и Google Sheets API в текущем MVP не используются.
 
 ## Безопасность
 

@@ -8,8 +8,9 @@
 - [mvp-scope.md](mvp-scope.md) - что входит в MVP и что не делаем в первой версии.
 - [setup.md](setup.md) - установка, запуск и проверка проекта.
 - [api.md](api.md) - форма заявки, Zod-валидация, Telegram и `POST /api/lead`.
-- [integrations.md](integrations.md) - текущая Telegram-интеграция и будущий Google Apps Script webhook.
+- [integrations.md](integrations.md) - Telegram-интеграция и Google Apps Script webhook.
+- [google-apps-script.md](google-apps-script.md) - пример Google Apps Script Web App для записи заявок в Google Sheets.
 
 ## Текущий статус
 
-Первая рабочая версия включает лендинг, форму заявки, Zod-валидацию, API route и Telegram-уведомление владельцу.
+Первая рабочая версия включает лендинг, форму заявки, Zod-валидацию, API route, Telegram-уведомление владельцу и опциональную запись заявки в Google Sheets через Apps Script.

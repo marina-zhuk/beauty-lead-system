@@ -32,9 +32,6 @@ export async function sendTelegramMessage(text: string): Promise<TelegramSendRes
   const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
   const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
 
-  console.info("[telegram] env token exists:", Boolean(token));
-  console.info("[telegram] env chat id exists:", Boolean(chatId));
-
   if (!token || !chatId) {
     console.error("[telegram] Missing required Telegram env variables");
     return { ok: false, reason: "missing_config" };
@@ -51,9 +48,8 @@ export async function sendTelegramMessage(text: string): Promise<TelegramSendRes
         text,
         disable_web_page_preview: true,
       }),
+      signal: AbortSignal.timeout(10000),
     });
-
-    console.info("[telegram] Telegram API response status:", response.status);
 
     if (!response.ok) {
       let data: TelegramApiResponse | null = null;

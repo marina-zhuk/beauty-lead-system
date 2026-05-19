@@ -7,7 +7,7 @@ type LeadMessageInput = LeadInput & {
 };
 
 function valueOrEmpty(value: string | undefined) {
-  return value?.trim() ? value.trim() : "Не указано";
+  return value?.trim() ? value.trim() : "не указано";
 }
 
 export function formatLeadMessage(lead: LeadMessageInput) {

@@ -14,11 +14,13 @@
 - demo-форма заявки;
 - API route `POST /api/lead`;
 - Telegram-уведомление владельцу после успешной валидации заявки;
+- опциональная запись заявки в Google Sheets через Google Apps Script Web App;
 - состояния формы: idle, loading, success, error;
 - `.env.local.example`.
 
 API валидирует данные, отправляет Telegram-уведомление и возвращает `success/error`.
-Google Sheets пока не подключен, переменная под Apps Script оставлена для следующего этапа.
+Если задан `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`, API дополнительно отправляет заявку в Google Apps Script Web App для записи в Google Sheets.
+Если Telegram недоступен локально, но заявка сохранена в Google Sheets, API возвращает `202` и понятное сообщение.
 
 ## Документация
 
@@ -29,6 +31,7 @@ Google Sheets пока не подключен, переменная под Apps
 - [запуск проекта](docs/setup.md);
 - [API формы](docs/api.md);
 - [интеграции](docs/integrations.md).
+- [Google Apps Script Webhook](docs/google-apps-script.md).
 
 ## Быстрый запуск
 
@@ -78,9 +81,34 @@ TELEGRAM_CHAT_ID=
 GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
 ```
 
-`GOOGLE_APPS_SCRIPT_WEBHOOK_URL` сейчас не обязателен. Если он пустой, проект работает через Telegram.
+`GOOGLE_APPS_SCRIPT_WEBHOOK_URL` не обязателен. Если он пустой, проект работает только через Telegram.
 
 `.env.local` закрыт в `.gitignore` правилом `.env*.local`.
+
+## Google Sheets через Google Apps Script
+
+Google Sheets подключается через Google Apps Script Web App без Google Cloud, Service Account и private key.
+
+Схема:
+
+```text
+Форма -> POST /api/lead -> Google Apps Script Webhook -> Telegram notification -> success/error
+```
+
+Как подключить:
+
+1. Создайте Google Sheet.
+2. Откройте `Extensions` -> `Apps Script`.
+3. Вставьте код из [docs/google-apps-script.md](docs/google-apps-script.md).
+4. Сделайте deploy как `Web app`.
+5. Скопируйте Web App URL.
+6. Добавьте URL в `.env.local`:
+
+```env
+GOOGLE_APPS_SCRIPT_WEBHOOK_URL=https://script.google.com/macros/s/your-web-app-id/exec
+```
+
+URL не храните в коде и не коммитьте в Git.
 
 ## Проверка
 
@@ -89,9 +117,4 @@ npm run build
 ```
 
 Форму можно проверить на главной странице: пустая форма должна показать ошибки, заполненная форма с настроенным Telegram должна отправить уведомление и показать success-сообщение.
-
-Telegram test endpoint:
-
-```text
-GET /api/telegram-test
-```
+Если задан `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`, после отправки проверьте новую строку в Google Sheet.

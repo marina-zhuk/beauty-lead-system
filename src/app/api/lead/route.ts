@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { formatLeadMessage } from "@/lib/formatLeadMessage";
+import { sendLeadToGoogleAppsScript } from "@/lib/googleAppsScript";
 import { leadSchema, type LeadInput } from "@/lib/lead-schema";
 import { sendTelegramMessage } from "@/lib/telegram";
 
@@ -29,25 +30,70 @@ export async function POST(request: Request) {
     const lead: LeadRecord = {
       ...result.data,
       createdAt: new Date().toISOString(),
-      source: "landing",
+      source: "website",
       status: "new",
     };
 
-    const telegramResult = await sendTelegramMessage(formatLeadMessage(lead));
+    const [googleAppsScriptResult, telegramResult] = await Promise.all([
+      sendLeadToGoogleAppsScript(lead),
+      sendTelegramMessage(formatLeadMessage(lead)),
+    ]);
+
+    if (!googleAppsScriptResult.ok) {
+      console.error(
+        "[api/lead] Google Apps Script sync failed:",
+        JSON.stringify(googleAppsScriptResult),
+      );
+    }
 
     if (!telegramResult.ok) {
       console.error("[api/lead] Telegram delivery failed:", JSON.stringify(telegramResult));
 
+      if (googleAppsScriptResult.ok && !googleAppsScriptResult.skipped) {
+        return NextResponse.json(
+          {
+            success: true,
+            message:
+              "Заявка сохранена, но Telegram сейчас недоступен. Проверьте доступ к api.telegram.org или настройки бота.",
+            lead,
+            telegramDelivered: false,
+          },
+          { status: 202 },
+        );
+      }
+
+      if (process.env.NODE_ENV === "development" && telegramResult.reason === "network_error") {
+        return NextResponse.json(
+          {
+            success: true,
+            message:
+              "Демо-заявка принята локально, но Telegram API недоступен с этой машины. Для полной проверки откройте доступ к api.telegram.org или проверьте deploy на Vercel.",
+            lead,
+            telegramDelivered: false,
+          },
+          { status: 202 },
+        );
+      }
+
       return NextResponse.json(
         {
           success: false,
-          message: "Не удалось отправить заявку. Попробуйте еще раз.",
+          message:
+            "Не удалось отправить заявку в Telegram. Проверьте TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID и доступ к api.telegram.org.",
         },
         { status: 502 },
       );
     }
 
-    return NextResponse.json({ success: true, lead }, { status: 201 });
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Заявка отправлена. Проверьте Telegram владельца.",
+        lead,
+        telegramDelivered: true,
+      },
+      { status: 201 },
+    );
   } catch (error) {
     console.error(
       "[api/lead] Lead request failed:",
