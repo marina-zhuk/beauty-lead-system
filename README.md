@@ -1,79 +1,45 @@
-# Beauty Booking System
+# Beauty Lead System
 
-Портфолио-MVP digital-услуги для владельцев beauty-бизнеса: лендинг, demo-форма заявки и Telegram-уведомления.
+MVP-система заявок для beauty-бизнеса: лендинг, форма заявки, Telegram-уведомления и Google Sheets.
 
-Главная идея: клиент оставляет заявку на сайте, а владелец сразу получает ее в Telegram.
+## Problem
 
-## Текущая версия
+Заявки клиентов часто теряются в переписках, а владелец не видит их в одном месте.
 
-- Next.js App Router;
+## Solution
+
+Клиент заполняет форму на сайте. Владелец получает заявку в Telegram. Данные сохраняются в Google Sheets.
+
+## How It Works
+
+- пользователь открывает лендинг;
+- заполняет форму;
+- заявка отправляется в Telegram;
+- заявка записывается в Google Sheets.
+
+## Features
+
+- responsive landing page;
+- lead form;
+- Zod validation;
+- Telegram notifications;
+- Google Sheets via Apps Script;
+- loading / success / error states.
+
+## Stack
+
+- Next.js;
 - TypeScript;
 - Tailwind CSS;
-- Zod-валидация;
-- лендинг для продажи мини-системы заявок владельцам beauty-бизнеса;
-- demo-форма заявки;
-- API route `POST /api/lead`;
-- Telegram-уведомление владельцу после успешной валидации заявки;
-- опциональная запись заявки в Google Sheets через Google Apps Script Web App;
-- состояния формы: idle, loading, success, error;
-- `.env.local.example`.
+- Zod;
+- Telegram Bot API;
+- Google Apps Script;
+- Google Sheets;
+- Vercel.
 
-API валидирует данные, отправляет Telegram-уведомление и возвращает `success/error`.
-Если задан `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`, API дополнительно отправляет заявку в Google Apps Script Web App для записи в Google Sheets.
-Если Telegram недоступен локально, но заявка сохранена в Google Sheets, API возвращает `202` и понятное сообщение.
+## Environment Variables
 
-## Документация
-
-Проектная документация лежит в [docs](docs/README.md):
-
-- [идея и аудитория](docs/project-brief.md);
-- [состав MVP](docs/mvp-scope.md);
-- [запуск проекта](docs/setup.md);
-- [API формы](docs/api.md);
-- [интеграции](docs/integrations.md).
-- [Google Apps Script Webhook](docs/google-apps-script.md).
-
-## Быстрый запуск
-
-```bash
-npm install
-npm run dev
-```
-
-Если PowerShell блокирует `npm`, используйте:
-
-```bash
-npm.cmd install
-npm.cmd run dev
-```
-
-Откройте `http://localhost:3000`.
-
-## Как получить TELEGRAM_BOT_TOKEN
-
-1. Откройте Telegram.
-2. Найдите `@BotFather`.
-3. Отправьте команду `/newbot`.
-4. Задайте имя и username бота.
-5. BotFather выдаст токен. Его нужно положить в `.env.local`, а не в код.
-
-Если токен был отправлен в публичное место или чат, перевыпустите его через BotFather.
-
-## Как получить TELEGRAM_CHAT_ID
-
-1. Напишите любое сообщение своему боту в Telegram.
-2. Откройте в браузере:
-
-```text
-https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/getUpdates
-```
-
-3. Найдите в ответе поле `chat.id`.
-4. Используйте это значение как `TELEGRAM_CHAT_ID`.
-
-## .env.local
-
-Создайте файл `.env.local` в корне проекта:
+Create `.env.local` in the project root:
 
 ```env
 TELEGRAM_BOT_TOKEN=
@@ -81,40 +47,30 @@ TELEGRAM_CHAT_ID=
 GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
 ```
 
-`GOOGLE_APPS_SCRIPT_WEBHOOK_URL` не обязателен. Если он пустой, проект работает только через Telegram.
+Do not commit real tokens, chat IDs, webhook URLs, or personal client data.
 
-`.env.local` закрыт в `.gitignore` правилом `.env*.local`.
-
-## Google Sheets через Google Apps Script
-
-Google Sheets подключается через Google Apps Script Web App без Google Cloud, Service Account и private key.
-
-Схема:
-
-```text
-Форма -> POST /api/lead -> Google Apps Script Webhook -> Telegram notification -> success/error
-```
-
-Как подключить:
-
-1. Создайте Google Sheet.
-2. Откройте `Extensions` -> `Apps Script`.
-3. Вставьте код из [docs/google-apps-script.md](docs/google-apps-script.md).
-4. Сделайте deploy как `Web app`.
-5. Скопируйте Web App URL.
-6. Добавьте URL в `.env.local`:
-
-```env
-GOOGLE_APPS_SCRIPT_WEBHOOK_URL=https://script.google.com/macros/s/your-web-app-id/exec
-```
-
-URL не храните в коде и не коммитьте в Git.
-
-## Проверка
+## Local Setup
 
 ```bash
-npm run build
+npm install
+npm run dev
 ```
 
-Форму можно проверить на главной странице: пустая форма должна показать ошибки, заполненная форма с настроенным Telegram должна отправить уведомление и показать success-сообщение.
-Если задан `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`, после отправки проверьте новую строку в Google Sheet.
+Open:
+
+```text
+http://localhost:3000
+```
+
+## Deployment Notes
+
+Deploy the project to Vercel, add all environment variables in Vercel Project Settings, then redeploy the project.
+
+## Future Improvements
+
+- Telegram bot;
+- lead statuses;
+- auto-reply;
+- reminders;
+- mini CRM;
+- UTM tracking.
