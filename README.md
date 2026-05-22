@@ -64,7 +64,34 @@ http://localhost:3000
 
 ## Deployment Notes
 
-Deploy the project to Vercel, add all environment variables in Vercel Project Settings, then redeploy the project.
+Production URL:
+
+```text
+https://beauty-lead-system.vercel.app
+```
+
+Deploy from local machine:
+
+```bash
+npx vercel deploy --prod
+```
+
+Required Vercel production environment variables:
+
+```env
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
+```
+
+After changing environment variables in Vercel, redeploy the project.
+
+Production test:
+
+1. Open `https://beauty-lead-system.vercel.app`.
+2. Submit the lead form with test data.
+3. Check that the owner receives a Telegram message.
+4. Check that the lead appears in Google Sheets.
 
 ## Future Improvements
 
