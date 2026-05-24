@@ -1,0 +1,77 @@
+"use client";
+
+import { useState } from "react";
+
+const proofCards = [
+  {
+    title: "Telegram notification",
+    description: "Владелец получает лид одним сообщением сразу после отправки формы.",
+    imageAlt: "Telegram lead notification screenshot",
+    imageSrc: "/screenshots/telegram-lead.png",
+    fallback: "Telegram screenshot will be added here",
+  },
+  {
+    title: "Google Sheets row",
+    description: "Та же заявка сохраняется строкой в Google Sheets для простого учета.",
+    imageAlt: "Google Sheets lead row screenshot",
+    imageSrc: "/screenshots/google-sheets-lead.png",
+    fallback: "Google Sheets screenshot will be added here",
+  },
+];
+
+type ImageState = Record<string, boolean>;
+
+export function PortfolioProof() {
+  const [failedImages, setFailedImages] = useState<ImageState>({});
+
+  return (
+    <section className="bg-white px-5 py-14">
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">Proof</p>
+          <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
+            Как выглядит заявка у владельца
+          </h2>
+          <p className="mt-4 leading-7 text-ink/65">
+            Форма отправляется с сайта. Данные автоматически попадают в Telegram и Google Sheets.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          {proofCards.map((card) => {
+            const imageFailed = failedImages[card.imageSrc];
+
+            return (
+              <article className="overflow-hidden rounded-lg border border-ink/10 bg-cream shadow-sm" key={card.title}>
+                <div className="border-b border-ink/10 bg-white px-5 py-4">
+                  <h3 className="text-xl font-semibold text-ink">{card.title}</h3>
+                  <p className="mt-2 leading-6 text-ink/65">{card.description}</p>
+                </div>
+
+                <div className="bg-white p-4">
+                  {imageFailed ? (
+                    <div className="flex aspect-[16/10] min-h-64 items-center justify-center rounded-md border border-dashed border-ink/20 bg-cream px-6 text-center">
+                      <p className="max-w-xs text-sm font-semibold text-ink/60">{card.fallback}</p>
+                    </div>
+                  ) : (
+                    <img
+                      alt={card.imageAlt}
+                      className="aspect-[16/10] min-h-64 w-full rounded-md border border-ink/10 bg-cream object-cover"
+                      onError={() =>
+                        setFailedImages((current) => ({
+                          ...current,
+                          [card.imageSrc]: true,
+                        }))
+                      }
+                      src={card.imageSrc}
+                    />
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

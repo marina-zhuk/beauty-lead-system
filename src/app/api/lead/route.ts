@@ -102,7 +102,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        message: "Заявка отправлена. Проверьте Telegram владельца.",
+        message: "Заявка отправлена в Telegram и сохранена в Google Sheets.",
         lead,
         telegramDelivered: true,
         googleSheetsSynced: !googleAppsScriptResult.skipped,

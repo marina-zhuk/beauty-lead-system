@@ -1,15 +1,15 @@
 const steps = [
   {
     title: "Клиент заполняет форму",
-    text: "Выбирает услугу, оставляет телефон и указывает удобное время для связи.",
+    text: "Оставляет имя, телефон, выбранную услугу, желаемую дату, удобное время и комментарий.",
   },
   {
-    title: "Telegram получает заявку",
-    text: "Данные проходят проверку и приходят владельцу одним сообщением в Telegram.",
+    title: "API отправляет уведомление",
+    text: "POST /api/lead валидирует данные и отправляет владельцу понятное сообщение в Telegram.",
   },
   {
-    title: "Владелец связывается с клиентом",
-    text: "Можно быстро подтвердить запись, уточнить детали или предложить другое время.",
+    title: "Заявка сохраняется в таблицу",
+    text: "Google Apps Script добавляет новую строку в Google Sheets для простого tracking без сложной CRM.",
   },
 ];
 
@@ -20,7 +20,7 @@ export function Process() {
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">How it works</p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Три шага от интереса до заявки в Telegram
+            Три шага от формы до Telegram и Google Sheets
           </h2>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">

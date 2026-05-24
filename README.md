@@ -1,103 +1,132 @@
 # Beauty Lead System
 
-MVP-система заявок для beauty-бизнеса: лендинг, форма заявки, Telegram-уведомления и Google Sheets.
+## Краткое описание
 
-## Problem
+Beauty Lead System - это portfolio MVP для beauty-бизнеса: адаптивный лендинг, форма заявки, backend endpoint и интеграции для передачи лида владельцу.
 
-Заявки клиентов часто теряются в переписках, а владелец не видит их в одном месте.
+Проект показывает реальный рабочий сценарий:
 
-## Solution
+```text
+Landing page -> lead form -> /api/lead -> Telegram + Google Apps Script -> Google Sheets
+```
 
-Клиент заполняет форму на сайте. Владелец получает заявку в Telegram. Данные сохраняются в Google Sheets.
+## Какую проблему решает
 
-## How It Works
+У мастеров и небольших салонов заявки часто теряются в личных сообщениях, Direct, WhatsApp или Telegram. Владелец может не увидеть новый запрос, забыть ответить клиенту или потерять данные заявки.
 
-- пользователь открывает лендинг;
-- заполняет форму;
-- заявка отправляется в Telegram;
-- заявка записывается в Google Sheets.
+Этот MVP показывает простой поток: клиент оставляет заявку на сайте, владелец получает уведомление в Telegram, а данные заявки сохраняются в Google Sheets для базового учета.
+
+## Как работает
+
+1. Клиент открывает лендинг.
+2. Заполняет форму заявки: имя, телефон, услуга, желаемая дата, время и комментарий.
+3. Frontend проверяет обязательные поля.
+4. Форма отправляет данные в API endpoint `/api/lead`.
+5. Backend валидирует данные и формирует заявку.
+6. Заявка отправляется владельцу в Telegram.
+7. Эти же данные передаются через Google Apps Script.
+8. Google Apps Script добавляет строку в Google Sheets.
 
 ## Features
 
-- responsive landing page;
-- lead form;
-- Zod validation;
-- Telegram notifications;
-- Google Sheets via Apps Script;
-- loading / success / error states.
+- Responsive landing page
+- Lead form
+- Frontend validation
+- API endpoint `/api/lead`
+- Telegram notification
+- Google Apps Script integration
+- Google Sheets lead storage
+- Vercel deployment
+- Environment variables for secrets
 
-## Stack
+## Tech Stack
 
-- Next.js;
-- TypeScript;
-- Tailwind CSS;
-- Zod;
-- Telegram Bot API;
-- Google Apps Script;
-- Google Sheets;
-- Vercel.
+- Next.js App Router
+- TypeScript
+- React
+- Tailwind CSS
+- Zod
+- Next.js API Route
+- Telegram Bot API
+- Google Apps Script
+- Google Sheets
+- Vercel
 
 ## Environment Variables
 
-Create `.env.local` in the project root:
+Переменные окружения нужны для хранения токенов и ключей вне кода. Реальные значения нельзя добавлять в README, GitHub или публичные файлы.
+
+Названия переменных:
 
 ```env
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
-GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
+GOOGLE_SHEETS_SPREADSHEET_ID=
+GOOGLE_SHEETS_CLIENT_EMAIL=
+GOOGLE_SHEETS_PRIVATE_KEY=
 ```
 
-Do not commit real tokens, chat IDs, webhook URLs, or personal client data.
+## Локальный запуск
 
-## Local Setup
+Установить зависимости:
 
 ```bash
 npm install
+```
+
+Создать `.env.local` в корне проекта и добавить переменные окружения.
+
+Запустить проект:
+
+```bash
 npm run dev
 ```
 
-Open:
+Открыть в браузере:
 
 ```text
 http://localhost:3000
 ```
 
-## Deployment Notes
+Проверка локально:
 
-Production URL:
+1. Открыть главную страницу.
+2. Заполнить форму заявки тестовыми данными.
+3. Проверить success/error состояние формы.
+4. Проверить Telegram-уведомление.
+5. Проверить новую строку в Google Sheets.
 
-```text
-https://beauty-lead-system.vercel.app
-```
+## Deployment
 
-Deploy from local machine:
+Проект подготовлен для деплоя на Vercel.
+
+Базовые шаги:
+
+1. Загрузить проект на GitHub.
+2. Импортировать репозиторий в Vercel.
+3. Добавить environment variables в настройках Vercel.
+4. Запустить deploy.
+5. После изменения env variables выполнить redeploy.
+
+Команда для production deploy через Vercel CLI:
 
 ```bash
 npx vercel deploy --prod
 ```
 
-Required Vercel production environment variables:
+## Portfolio Note
 
-```env
-TELEGRAM_BOT_TOKEN=
-TELEGRAM_CHAT_ID=
-GOOGLE_APPS_SCRIPT_WEBHOOK_URL=
-```
+Это portfolio MVP, а не production-ready CRM. Проект демонстрирует коммерчески полезный flow для малого beauty-бизнеса: лендинг собирает заявку, backend обрабатывает данные, Telegram помогает быстро увидеть лид, а Google Sheets подходит для простого учета.
 
-After changing environment variables in Vercel, redeploy the project.
+В проекте не реализованы оплата, личный кабинет, календарное бронирование и полноценная CRM-система.
 
-Production test:
+## Что можно улучшить позже
 
-1. Open `https://beauty-lead-system.vercel.app`.
-2. Submit the lead form with test data.
-3. Check that the owner receives a Telegram message.
-4. Check that the lead appears in Google Sheets.
-
-## Future Improvements
-
-- Telegram bot;
-- lead statuses;
-- auto-reply;
-- reminders;
-- mini CRM;
-- UTM tracking.
+- Реальные screenshots Telegram и Google Sheets в proof-секции
+- Админ-панель для просмотра заявок
+- Фильтры по статусам заявок
+- UTM tracking
+- Telegram bot commands
+- Автоответ клиенту
+- Напоминания владельцу
+- Более подробная обработка ошибок интеграций

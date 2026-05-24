@@ -1,15 +1,15 @@
 const items = [
   {
     title: "Форма на лендинге",
-    text: "Клиент оставляет имя, телефон, услугу, удобное время и комментарий в одном месте.",
+    text: "Клиент оставляет имя, телефон, услугу, желаемую дату, удобное время и комментарий в одном месте.",
   },
   {
     title: "Заявка приходит в Telegram",
     text: "Владелец или администратор сразу получает понятное сообщение со всеми данными.",
   },
   {
-    title: "Быстрый ответ клиенту",
-    text: "Не нужно искать заявку в переписках: можно сразу связаться с клиентом и подтвердить запись.",
+    title: "Строка в Google Sheets",
+    text: "Та же заявка сохраняется в таблицу со статусом обработки, чтобы вести простой учет лидов.",
   },
 ];
 
@@ -20,10 +20,11 @@ export function Solution() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">Solution</p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Одна форма — одно уведомление — быстрый ответ
+            Одна форма — Telegram — Google Sheets
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Beauty Booking System собирает входящие заявки через сайт и отправляет их в Telegram без сложной CRM на старте.
+            Beauty Lead System показывает реальный MVP-сценарий: лендинг принимает заявку,
+            API route обрабатывает данные, отправляет уведомление в Telegram и сохраняет строку в Google Sheets.
           </p>
         </div>
 

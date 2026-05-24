@@ -3,7 +3,7 @@ export function Hero() {
     ["Услуга", "Маникюр"],
     ["Клиент", "Анна"],
     ["Время", "сегодня 16:30"],
-    ["Статус", "отправлено в Telegram"],
+    ["Статус", "new в Google Sheets"],
   ];
 
   return (
@@ -11,14 +11,14 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="mb-5 inline-flex rounded-full border border-accent/20 bg-white px-4 py-2 text-sm font-medium text-accent">
-            Beauty Booking System
+            Beauty Lead System
           </p>
           <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
             Мини-система заявок для beauty-мастеров и салонов
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70">
-            Лендинг, форма записи и Telegram-уведомления, чтобы заявки не терялись в переписках.
-            Клиент оставляет заявку на сайте, а владелец сразу видит ее в Telegram.
+            Portfolio MVP для beauty-бизнеса: клиент оставляет заявку на лендинге,
+            владелец получает ее в Telegram, а те же данные автоматически сохраняются в Google Sheets.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
@@ -43,7 +43,7 @@ export function Hero() {
                 Новая заявка
               </p>
               <span className="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold text-moss">
-                Telegram
+                Telegram + Sheets
               </span>
             </div>
             <div className="mt-5 space-y-3">

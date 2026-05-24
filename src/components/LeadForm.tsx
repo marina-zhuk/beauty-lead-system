@@ -76,7 +76,7 @@ export function LeadForm() {
       }
 
       setStatus("success");
-      setMessage(data.message ?? "Демо-заявка отправлена. Проверьте Telegram владельца.");
+      setMessage(data.message ?? "Демо-заявка отправлена в Telegram и сохранена в Google Sheets.");
       setForm(initialForm);
       setErrors({});
     } catch {
@@ -96,14 +96,14 @@ export function LeadForm() {
             Попробуйте демо-заявку
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Заполните форму как тестовую заявку. Она придет в Telegram владельцу и покажет,
-            как работает сценарий: сайт, форма и уведомление.
+            Заполните форму как тестовую заявку. Она пройдет через /api/lead,
+            придет владельцу в Telegram и сохранится в Google Sheets.
           </p>
           <div className="mt-6 rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
             <p className="font-semibold text-ink">Это не запись в реальный салон</p>
             <p className="mt-2 leading-7 text-ink/65">
               Форма демонстрирует digital-систему для beauty-бизнеса: какие данные собираются
-              и как быстро владелец получает заявку.
+              и как владелец получает лид в Telegram, а затем ведет простой учет в Google Sheets.
             </p>
           </div>
         </div>
@@ -128,7 +128,7 @@ export function LeadForm() {
                 className="min-h-12 rounded-md border border-ink/15 bg-white px-4 outline-none transition focus:border-accent"
                 name="phone"
                 onChange={(event) => updateField("phone", event.target.value)}
-                placeholder="+7 999 123-45-67"
+                placeholder="Введите телефон"
                 type="tel"
                 value={form.phone}
               />
