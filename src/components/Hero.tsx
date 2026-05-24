@@ -7,13 +7,13 @@ export function Hero() {
   ];
 
   return (
-    <section className="px-5 pb-14 pt-10 sm:pt-14 lg:pb-20 lg:pt-20">
+    <section className="overflow-x-hidden px-5 pb-14 pt-10 sm:pt-14 lg:pb-20 lg:pt-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
+        <div className="min-w-0">
           <p className="mb-5 inline-flex rounded-full border border-accent/20 bg-white px-4 py-2 text-sm font-medium text-accent">
             Beauty Lead System
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] text-ink [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">
             Мини-система заявок для beauty-мастеров и салонов
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70">
@@ -36,9 +36,9 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-soft">
+        <div className="min-w-0 rounded-lg border border-ink/10 bg-white p-5 shadow-soft">
           <div className="rounded-md bg-cream p-5">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
                 Новая заявка
               </p>

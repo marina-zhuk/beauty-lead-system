@@ -3,7 +3,7 @@ const packages = [
     title: "Start",
     description: "Минимальный пакет для приема заявок без лишней CRM.",
     price: "от 7 000 ₽",
-    items: ["Lead form", "Telegram notification", "Basic setup"],
+    items: ["Форма заявки", "Telegram-уведомление", "Базовая настройка"],
   },
   {
     title: "Standard",
@@ -11,11 +11,11 @@ const packages = [
     price: "от 15 000 ₽",
     recommended: true,
     items: [
-      "Landing page",
-      "Lead form",
-      "Telegram notification",
-      "Google Sheets integration",
-      "Basic lead tracking",
+      "Лендинг",
+      "Форма заявки",
+      "Telegram-уведомление",
+      "Интеграция с Google Sheets",
+      "Базовый учет лидов",
     ],
   },
   {
@@ -23,11 +23,11 @@ const packages = [
     description: "Расширенный вариант с ботом и простой логикой обработки заявок.",
     price: "от 30 000 ₽",
     items: [
-      "Landing page",
-      "Telegram bot",
-      "Google Sheets / simple CRM table",
-      "Statuses for lead processing",
-      "Basic automation logic",
+      "Лендинг",
+      "Telegram-бот",
+      "Google Sheets / простая CRM-таблица",
+      "Статусы обработки заявок",
+      "Базовая логика автоматизации",
     ],
   },
 ];
@@ -37,13 +37,15 @@ export function Packages() {
     <section className="px-5 py-14" id="included">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">Service examples</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
+            Примеры услуг
+          </p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
             Пакеты для beauty-бизнеса
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Примеры упаковки услуги на базе этого portfolio MVP: от простой формы до лендинга
-            с Telegram, Google Sheets и базовой автоматизацией.
+            Примеры упаковки услуги на базе этого portfolio MVP: от простой формы до
+            лендинга с Telegram, Google Sheets и базовой автоматизацией.
           </p>
         </div>
 
@@ -51,15 +53,13 @@ export function Packages() {
           {packages.map((item) => (
             <article
               className={`relative rounded-lg border p-5 shadow-sm ${
-                item.recommended
-                  ? "border-accent/35 bg-white shadow-soft"
-                  : "border-ink/10 bg-white"
+                item.recommended ? "border-accent/35 bg-white shadow-soft" : "border-ink/10 bg-white"
               }`}
               key={item.title}
             >
               {item.recommended ? (
                 <p className="mb-4 inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
-                  Recommended
+                  Рекомендуемый
                 </p>
               ) : null}
               <h3 className="text-2xl font-semibold text-ink">{item.title}</h3>
@@ -78,7 +78,9 @@ export function Packages() {
         </div>
 
         <p className="mt-6 rounded-lg border border-ink/10 bg-white p-4 text-sm leading-6 text-ink/65">
-          Цены указаны как пример упаковки услуги для портфолио. Финальная стоимость зависит от задачи клиента.
+          Цены указаны как пример упаковки услуги для портфолио. Финальная стоимость зависит
+          от задачи клиента. При необходимости проект можно адаптировать в двухъязычную
+          версию с переключением RU / EN.
         </p>
       </div>
     </section>

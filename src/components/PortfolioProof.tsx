@@ -4,18 +4,18 @@ import { useState } from "react";
 
 const proofCards = [
   {
-    title: "Telegram notification",
+    title: "Telegram-уведомление",
     description: "Владелец получает лид одним сообщением сразу после отправки формы.",
-    imageAlt: "Telegram lead notification screenshot",
+    imageAlt: "Скриншот Telegram-уведомления о заявке",
     imageSrc: "/screenshots/telegram-lead.png",
-    fallback: "Telegram screenshot will be added here",
+    fallback: "Скриншот Telegram будет добавлен здесь",
   },
   {
-    title: "Google Sheets row",
+    title: "Строка в Google Sheets",
     description: "Та же заявка сохраняется строкой в Google Sheets для простого учета.",
-    imageAlt: "Google Sheets lead row screenshot",
+    imageAlt: "Скриншот строки заявки в Google Sheets",
     imageSrc: "/screenshots/google-sheets-lead.png",
-    fallback: "Google Sheets screenshot will be added here",
+    fallback: "Скриншот Google Sheets будет добавлен здесь",
   },
 ];
 
@@ -28,7 +28,9 @@ export function PortfolioProof() {
     <section className="bg-white px-5 py-14">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">Proof</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+            Подтверждение работы
+          </p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
             Как выглядит заявка у владельца
           </h2>
