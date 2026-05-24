@@ -25,7 +25,7 @@ export function PortfolioProof() {
   const [failedImages, setFailedImages] = useState<ImageState>({});
 
   return (
-    <section className="bg-white px-5 py-14">
+    <section className="bg-white px-5 py-14" id="proof">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
@@ -52,13 +52,13 @@ export function PortfolioProof() {
 
                 <div className="bg-white p-4">
                   {imageFailed ? (
-                    <div className="flex aspect-[16/10] min-h-64 items-center justify-center rounded-md border border-dashed border-ink/20 bg-cream px-6 text-center">
+                    <div className="flex min-h-56 items-center justify-center rounded-md border border-dashed border-ink/20 bg-cream px-6 text-center sm:min-h-64">
                       <p className="max-w-xs text-sm font-semibold text-ink/60">{card.fallback}</p>
                     </div>
                   ) : (
                     <img
                       alt={card.imageAlt}
-                      className="aspect-[16/10] min-h-64 w-full rounded-md border border-ink/10 bg-cream object-cover"
+                      className="h-auto w-full rounded-md border border-ink/10 bg-cream object-contain"
                       onError={() =>
                         setFailedImages((current) => ({
                           ...current,
