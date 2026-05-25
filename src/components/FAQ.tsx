@@ -1,32 +1,40 @@
 const questions = [
   {
-    question: "Можно ли адаптировать под мой салон?",
-    answer: "Да. Тексты, услуги, поля формы и визуальный стиль можно адаптировать под салон, частного мастера или студию.",
+    question: "Это готовый продукт или demo project?",
+    answer: "Это portfolio MVP: рабочий пример лендинга, формы, Telegram-уведомления и записи в Google Sheets. Для клиента его нужно адаптировать под конкретный бизнес, тексты, услуги и интеграции.",
   },
   {
-    question: "Куда приходят заявки?",
-    answer: "В Telegram владельца или администратора. Параллельно та же заявка сохраняется новой строкой в Google Sheets.",
+    question: "Сколько может стоить такая система?",
+    answer: "На странице указаны примерные пакеты. Итоговая цена зависит от объема: одна форма или полноценный лендинг, нужна ли Google Sheets, бот, дополнительные поля и настройка деплоя.",
   },
   {
-    question: "Нужна ли сложная CRM?",
-    answer: "Нет. Это портфолио-MVP: форма собирает лид, Telegram помогает быстро увидеть заявку, а Google Sheets подходит для простого tracking и статусов.",
+    question: "Можно ли адаптировать не только под салон?",
+    answer: "Да. Такой поток подходит для мастеров, студий, локальных услуг, консультаций и небольших сервисных бизнесов. Меняются услуги, поля формы, тексты, статусы и таблица.",
   },
   {
-    question: "Google Sheets уже подключен?",
-    answer: "Да. Текущий MVP отправляет данные из /api/lead в Google Apps Script, а скрипт сохраняет заявку в Google Sheets.",
+    question: "Сколько времени занимает внедрение?",
+    answer: "Простой вариант с лендингом, формой и Telegram обычно можно собрать быстрее, чем систему с ботом, таблицей, несколькими сценариями и деплоем. Точный срок зависит от требований и готовности текстов.",
+  },
+  {
+    question: "Есть ли здесь оплата или payment mock?",
+    answer: "Нет. В этом MVP нет оплаты и mock-платежей. Проект честно показывает прием заявки, уведомление владельцу и базовый учет в Google Sheets.",
+  },
+  {
+    question: "Какие есть ограничения по интеграциям?",
+    answer: "Текущий demo использует Telegram Bot API и Google Apps Script для Google Sheets. Другие CRM, email-сервисы, платежи или Mini App потребуют отдельной доработки.",
   },
 ];
 
 export function FAQ() {
   return (
-    <section className="bg-white px-5 py-12">
-      <div className="mx-auto max-w-4xl">
+    <section className="bg-white px-5 py-14">
+      <div className="mx-auto max-w-5xl">
         <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">FAQ</p>
-        <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">Частые вопросы</h2>
-        <div className="mt-8 divide-y divide-ink/10 rounded-lg border border-ink/10 bg-cream">
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Частые вопросы</h2>
+        <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
           {questions.map((item) => (
-            <details className="group p-5" key={item.question}>
-              <summary className="cursor-pointer list-none font-semibold text-ink">
+            <details className="group py-5" key={item.question}>
+              <summary className="cursor-pointer list-none font-semibold text-ink transition hover:text-accent">
                 {item.question}
               </summary>
               <p className="mt-3 leading-7 text-ink/65">{item.answer}</p>

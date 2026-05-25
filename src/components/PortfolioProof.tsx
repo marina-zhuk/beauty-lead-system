@@ -5,14 +5,14 @@ import { useState } from "react";
 const proofCards = [
   {
     title: "Telegram-уведомление",
-    description: "Владелец получает лид одним сообщением сразу после отправки формы.",
+    description: "Владелец видит заявку в привычном канале и может быстро ответить клиенту.",
     imageAlt: "Скриншот Telegram-уведомления о заявке",
     imageSrc: "/screenshots/telegram-lead.png",
     fallback: "Скриншот Telegram будет добавлен здесь",
   },
   {
     title: "Строка в Google Sheets",
-    description: "Та же заявка сохраняется строкой в Google Sheets для простого учета.",
+    description: "Заявка остается в таблице, чтобы не потерять ее после первого уведомления.",
     imageAlt: "Скриншот строки заявки в Google Sheets",
     imageSrc: "/screenshots/google-sheets-lead.png",
     fallback: "Скриншот Google Sheets будет добавлен здесь",
@@ -32,10 +32,11 @@ export function PortfolioProof() {
             Подтверждение работы
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Как выглядит заявка у владельца
+            Что уже можно проверить в demo
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Форма отправляется с сайта. Данные автоматически попадают в Telegram и Google Sheets.
+            Этот портфолио-MVP показывает реальный путь заявки: форма на сайте,
+            Telegram-уведомление и запись в Google Sheets.
           </p>
         </div>
 

@@ -1,26 +1,26 @@
 const packages = [
   {
     title: "Start",
-    description: "Минимальный пакет для приема заявок без лишней CRM.",
+    description: "Для бизнеса, которому нужна простая форма и быстрые уведомления без таблицы учета.",
     price: "от 7 000 ₽",
-    items: ["Форма заявки", "Telegram-уведомление", "Базовая настройка"],
+    items: ["Форма под ваши услуги", "Telegram-уведомление владельцу", "Базовая настройка текста и полей"],
   },
   {
     title: "Standard",
-    description: "Рекомендуемый MVP для beauty-бизнеса: сайт, заявка и простой учет лидов.",
+    description: "Для владельца, который хочет принимать заявки и видеть их в таблице для обработки.",
     price: "от 15 000 ₽",
     recommended: true,
     items: [
-      "Лендинг",
+      "Лендинг под бизнес",
       "Форма заявки",
       "Telegram-уведомление",
-      "Интеграция с Google Sheets",
-      "Базовый учет лидов",
+      "Запись заявок в Google Sheets",
+      "Статусы для ручной обработки",
     ],
   },
   {
     title: "Pro",
-    description: "Расширенный вариант с ботом и простой логикой обработки заявок.",
+    description: "Для проекта, где кроме лендинга нужен Telegram-бот или дополнительные сценарии обработки.",
     price: "от 30 000 ₽",
     items: [
       "Лендинг",
@@ -34,26 +34,26 @@ const packages = [
 
 export function Packages() {
   return (
-    <section className="px-5 py-14" id="included">
-      <div className="mx-auto max-w-6xl">
+    <section className="px-5 py-16" id="included">
+      <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
             Примеры услуг
           </p>
-          <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Пакеты для beauty-бизнеса
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            Что можно адаптировать под ваш бизнес
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Примеры упаковки услуги на базе этого portfolio MVP: от простой формы до
-            лендинга с Telegram, Google Sheets и базовой автоматизацией.
+            Текущий demo сделан для beauty-ниши, но основа подходит и для других услуг:
+            форму, тексты, список услуг, Telegram-уведомления и таблицу можно изменить под конкретный процесс.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-9 grid gap-4 lg:grid-cols-[0.85fr_1.3fr_0.85fr] lg:items-stretch">
           {packages.map((item) => (
             <article
-              className={`relative rounded-lg border p-5 shadow-sm ${
-                item.recommended ? "border-accent/35 bg-white shadow-soft" : "border-ink/10 bg-white"
+              className={`relative rounded-lg border p-5 transition duration-300 hover:-translate-y-1 ${
+                item.recommended ? "border-accent/35 bg-white p-6 shadow-soft lg:-mt-5" : "border-ink/10 bg-white/80 shadow-sm"
               }`}
               key={item.title}
             >
@@ -64,7 +64,7 @@ export function Packages() {
               ) : null}
               <h3 className="text-2xl font-semibold text-ink">{item.title}</h3>
               <p className="mt-3 min-h-16 leading-7 text-ink/65">{item.description}</p>
-              <p className="mt-5 text-3xl font-semibold text-ink">{item.price}</p>
+              <p className="mt-5 text-3xl font-semibold tracking-tight text-ink">{item.price}</p>
               <ul className="mt-5 space-y-3 text-sm text-ink/75">
                 {item.items.map((included) => (
                   <li className="flex gap-2" key={included}>
@@ -77,10 +77,9 @@ export function Packages() {
           ))}
         </div>
 
-        <p className="mt-6 rounded-lg border border-ink/10 bg-white p-4 text-sm leading-6 text-ink/65">
+        <p className="mt-6 border-l-2 border-accent/35 bg-white/70 p-4 text-sm leading-6 text-ink/65">
           Цены указаны как пример упаковки услуги для портфолио. Финальная стоимость зависит
-          от задачи клиента. При необходимости проект можно адаптировать в двухъязычную
-          версию с переключением RU / EN.
+          от количества страниц, полей формы, интеграций и нужной логики обработки заявок.
         </p>
       </div>
     </section>
