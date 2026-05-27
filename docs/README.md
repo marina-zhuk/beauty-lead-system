@@ -1,16 +1,18 @@
-# Документация Beauty Lead System
+# Beauty Lead System Docs
 
-Эта папка хранит проектную документацию по MVP: идея, состав первой версии, запуск, API и интеграции.
+This folder contains supporting documentation for the portfolio MVP.
 
-## Разделы
+## Sections
 
-- [project-brief.md](project-brief.md) - идея проекта, аудитория, проблема и решение.
-- [mvp-scope.md](mvp-scope.md) - что входит в MVP и что не делаем в первой версии.
-- [setup.md](setup.md) - установка, запуск и проверка проекта.
-- [api.md](api.md) - форма заявки, Zod-валидация, Telegram и `POST /api/lead`.
-- [integrations.md](integrations.md) - Telegram-интеграция и Google Apps Script webhook.
-- [google-apps-script.md](google-apps-script.md) - пример Google Apps Script Web App для записи заявок в Google Sheets.
+- [project-brief.md](project-brief.md) - project idea, audience, business problem, and solution.
+- [mvp-scope.md](mvp-scope.md) - what is included in the MVP and what is out of scope.
+- [setup.md](setup.md) - local setup and project run instructions.
+- [api.md](api.md) - lead form payload, Zod validation, Telegram, and `POST /api/lead`.
+- [integrations.md](integrations.md) - Telegram integration and Google Apps Script webhook.
+- [google-apps-script.md](google-apps-script.md) - Google Apps Script Web App example for writing leads to Google Sheets.
+- [TESTING.md](TESTING.md) - local, Vercel, Telegram, and Google Sheets testing checklist.
+- [screenshots/README.md](screenshots/README.md) - expected portfolio screenshots.
 
-## Текущий статус
+## Current Status
 
-Первая рабочая версия включает лендинг, форму заявки, Zod-валидацию, API route, Telegram-уведомление владельцу и запись заявки в Google Sheets через Apps Script.
+The MVP includes a responsive landing page, lead form, Zod validation, API route, Telegram notification, and Google Sheets storage through Google Apps Script.

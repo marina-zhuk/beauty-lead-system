@@ -12,13 +12,14 @@ export function WhatOwnerReceives() {
     <section className="bg-white px-5 py-16">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">Owner view</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">What owner receives</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Что владелец видит после отправки формы
+            Владелец получает заявку в понятном формате
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Вместо разрозненных сообщений владелец получает структурированную заявку:
-            кому ответить, по какой услуге, на какое время и в каком статусе она сейчас.
+            Вместо разрозненных сообщений владелец видит structured lead: контакт клиента,
+            услугу, дату, время, комментарий и статус new. Этого достаточно, чтобы быстро
+            связаться с клиентом и не потерять запрос.
           </p>
         </div>
 

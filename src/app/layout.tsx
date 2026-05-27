@@ -4,7 +4,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Beauty Lead System",
-  description: "MVP лендинга и формы заявок для beauty-мастеров.",
+  description:
+    "Portfolio MVP: landing page, lead form, Telegram notification and Google Sheets storage for beauty businesses.",
 };
 
 export default function RootLayout({

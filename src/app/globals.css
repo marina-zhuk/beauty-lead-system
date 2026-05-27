@@ -12,11 +12,13 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top right, rgba(88, 116, 92, 0.12), transparent 360px),
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 247, 243, 0) 520px),
@@ -31,6 +33,12 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
 }
 
 ::selection {

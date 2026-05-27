@@ -1,30 +1,30 @@
 const packages = [
   {
     title: "Start",
-    description: "Для бизнеса, которому нужна простая форма и быстрые уведомления без таблицы учета.",
+    description: "Для бизнеса, которому нужна простая форма и быстрые Telegram notifications без отдельной таблицы учета.",
     price: "от 7 000 ₽",
-    items: ["Форма под ваши услуги", "Telegram-уведомление владельцу", "Базовая настройка текста и полей"],
+    items: ["Форма под ваши услуги", "Telegram-уведомление владельцу", "Базовая настройка текстов и полей"],
   },
   {
     title: "Standard",
-    description: "Для владельца, который хочет принимать заявки и видеть их в таблице для обработки.",
+    description: "Для владельца, который хочет принимать заявки и видеть их в Google Sheets для ручной обработки.",
     price: "от 15 000 ₽",
     recommended: true,
     items: [
       "Лендинг под бизнес",
       "Форма заявки",
-      "Telegram-уведомление",
+      "Telegram notification",
       "Запись заявок в Google Sheets",
       "Статусы для ручной обработки",
     ],
   },
   {
     title: "Pro",
-    description: "Для проекта, где кроме лендинга нужен Telegram-бот или дополнительные сценарии обработки.",
+    description: "Для проекта, где кроме лендинга нужен Telegram bot или дополнительные сценарии обработки заявок.",
     price: "от 30 000 ₽",
     items: [
       "Лендинг",
-      "Telegram-бот",
+      "Telegram bot",
       "Google Sheets / простая CRM-таблица",
       "Статусы обработки заявок",
       "Базовая логика автоматизации",
@@ -38,14 +38,14 @@ export function Packages() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
-            Примеры услуг
+            Commercial packaging
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Что можно адаптировать под ваш бизнес
+            Как это можно упаковать для клиента
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Текущий demo сделан для beauty-ниши, но основа подходит и для других услуг:
-            форму, тексты, список услуг, Telegram-уведомления и таблицу можно изменить под конкретный процесс.
+            Текущий demo сделан для beauty-ниши, но коммерческая основа подходит и для других услуг:
+            форму, тексты, список услуг, Telegram notification и таблицу можно изменить под конкретный процесс.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export function Packages() {
             >
               {item.recommended ? (
                 <p className="mb-4 inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
-                  Рекомендуемый
+                  Recommended demo package
                 </p>
               ) : null}
               <h3 className="text-2xl font-semibold text-ink">{item.title}</h3>

@@ -4,18 +4,18 @@ import { useState } from "react";
 
 const proofCards = [
   {
-    title: "Telegram-уведомление",
+    title: "Telegram notification",
     description: "Владелец видит заявку в привычном канале и может быстро ответить клиенту.",
     imageAlt: "Скриншот Telegram-уведомления о заявке",
     imageSrc: "/screenshots/telegram-lead.png",
-    fallback: "Скриншот Telegram будет добавлен здесь",
+    fallback: "Скриншот Telegram можно заменить реальным примером перед публикацией кейса",
   },
   {
-    title: "Строка в Google Sheets",
+    title: "Google Sheets row",
     description: "Заявка остается в таблице, чтобы не потерять ее после первого уведомления.",
     imageAlt: "Скриншот строки заявки в Google Sheets",
     imageSrc: "/screenshots/google-sheets-lead.png",
-    fallback: "Скриншот Google Sheets будет добавлен здесь",
+    fallback: "Скриншот Google Sheets можно заменить реальным примером перед публикацией кейса",
   },
 ];
 
@@ -29,14 +29,14 @@ export function PortfolioProof() {
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
-            Подтверждение работы
+            Proof of work
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-            Что уже можно проверить в demo
+            Что можно показать в portfolio case
           </h2>
           <p className="mt-4 leading-7 text-ink/65">
-            Этот портфолио-MVP показывает реальный путь заявки: форма на сайте,
-            Telegram-уведомление и запись в Google Sheets.
+            Этот MVP показывает не только интерфейс, но и рабочую цепочку:
+            форма на сайте, Telegram notification и запись в Google Sheets через Apps Script.
           </p>
         </div>
 
