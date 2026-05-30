@@ -2,17 +2,24 @@ import { NextResponse } from "next/server";
 
 import { formatLeadMessage } from "@/lib/formatLeadMessage";
 import { sendLeadToGoogleAppsScript } from "@/lib/googleAppsScript";
-import { leadSchema, type LeadInput } from "@/lib/lead-schema";
+import { leadSchema, type LeadRecord } from "@/lib/lead-schema";
+import { checkRateLimit } from "@/lib/rateLimit";
 import { sendTelegramMessage } from "@/lib/telegram";
-
-type LeadRecord = LeadInput & {
-  createdAt: string;
-  source: string;
-  status: "new";
-};
 
 export async function POST(request: Request) {
   try {
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      request.headers.get("x-real-ip") ??
+      "unknown";
+    const rateLimit = checkRateLimit(ip);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { success: false, message: "Слишком много запросов. Попробуйте чуть позже." },
+        { status: 429, headers: { "Retry-After": String(rateLimit.retryAfterSeconds) } },
+      );
+    }
+
     const body = await request.json();
     const result = leadSchema.safeParse(body);
 
@@ -67,7 +74,7 @@ export async function POST(request: Request) {
           {
             success: true,
             message:
-              "Демо-заявка принята локально, но Telegram API недоступен с этой машины. Для полной проверки откройте доступ к api.telegram.org или проверьте deploy на Vercel.",
+              "Заявка принята, но Telegram сейчас недоступен. Мы сохранили данные для дальнейшей обработки.",
             lead,
             telegramDelivered: false,
           },
@@ -90,7 +97,7 @@ export async function POST(request: Request) {
         {
           success: true,
           message:
-            "Заявка отправлена в Telegram, но не сохранилась в Google Sheets. Проверьте Web App URL и deploy Apps Script.",
+            "Заявка отправлена владельцу, но сейчас не сохранилась в таблице. Мы уже видим обращение и сможем обработать его вручную.",
           lead,
           telegramDelivered: true,
           googleSheetsSynced: false,

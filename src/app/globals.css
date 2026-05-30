@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  color: #1f211f;
-  background: #f7f7f3;
+  color: #2a1714;
+  background: #fbf7f3;
 }
 
 * {
@@ -18,14 +18,18 @@ html {
 
 body {
   margin: 0;
+  width: 100%;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top right, rgba(88, 116, 92, 0.12), transparent 360px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 247, 243, 0) 520px),
-    #f7f7f3;
-  color: #1f211f;
+    linear-gradient(120deg, rgba(183, 119, 99, 0.11), transparent 34%),
+    linear-gradient(180deg, #fffdfb 0%, #fbf7f3 36%, #f6eee8 100%);
+  color: #2a1714;
   font-family:
-    Aptos, "Segoe UI", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    "Aptos", "Segoe UI", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+main {
+  overflow-x: hidden;
 }
 
 button,
@@ -42,8 +46,55 @@ textarea:disabled {
 }
 
 ::selection {
-  background: #d7e1cf;
-  color: #1f211f;
+  background: #ead0c3;
+  color: #2a1714;
+}
+
+.serif-display {
+  font-family: Georgia, "Times New Roman", ui-serif, serif;
+}
+
+.page-shell {
+  margin-inline: auto;
+  max-width: 1400px;
+  min-width: 0;
+  padding-inline: clamp(1rem, 3vw, 3rem);
+  width: 100%;
+}
+
+.glass-panel {
+  border: 1px solid rgba(232, 216, 207, 0.92);
+  background: rgba(255, 252, 249, 0.76);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 28px 70px rgba(72, 45, 36, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.section-pad {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.eyebrow {
+  color: #b77763;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  max-width: 10ch;
+}
+
+@media (min-width: 640px) {
+  .eyebrow {
+    letter-spacing: 0.24em;
+  }
+
+  .hero-title {
+    max-width: 64rem;
+  }
 }
 
 @keyframes reveal-up {

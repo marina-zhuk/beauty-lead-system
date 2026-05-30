@@ -1,40 +1,95 @@
 const steps = [
   {
-    title: "Visitor submits form",
-    text: "Форма собирает имя, телефон, услугу, желаемую дату, время и комментарий без длинной переписки.",
+    number: "01",
+    title: "Клиент оставляет заявку",
+    text: "Заполняет короткую форму на сайте: имя, телефон, услугу и удобное время.",
+    visual: "form",
   },
   {
-    title: "Owner receives Telegram notification",
-    text: "В Telegram приходит структурированная заявка с данными клиента и услугой, по которой нужно ответить.",
+    number: "02",
+    title: "Владелец получает уведомление",
+    text: "Заявка сразу приходит в Telegram, чтобы администратор мог быстро ответить.",
+    visual: "telegram",
   },
   {
-    title: "Lead is saved to Google Sheets",
-    text: "Через Google Apps Script заявка сохраняется в таблицу, где ее можно обрабатывать вручную по статусам.",
+    number: "03",
+    title: "Данные сохраняются в таблице",
+    text: "Контакты и услуга остаются в одном месте, а не теряются в переписках.",
+    visual: "table",
   },
 ];
 
+function StepVisual({ type }: { type: string }) {
+  if (type === "telegram") {
+    return (
+      <div className="mt-7 rounded-[8px] border border-line bg-white/75 p-4">
+        <div className="flex items-center justify-between text-xs text-ink/50">
+          <span>Telegram</span>
+          <span>сейчас</span>
+        </div>
+        <p className="mt-4 font-semibold text-ink">Новая заявка</p>
+        <p className="mt-2 text-sm leading-6 text-ink/65">
+          Имя: клиент<br />
+          Телефон: скрыт<br />
+          Услуга: брови
+        </p>
+      </div>
+    );
+  }
+
+  if (type === "table") {
+    return (
+      <div className="mt-7 rounded-[8px] border border-line bg-white/75 p-4">
+        <div className="grid grid-cols-3 gap-2 text-xs">
+          <span className="font-semibold text-ink">Имя</span>
+          <span className="font-semibold text-ink">Услуга</span>
+          <span className="font-semibold text-ink">Статус</span>
+          <span className="rounded bg-cream px-2 py-2 text-ink/65">клиент</span>
+          <span className="rounded bg-cream px-2 py-2 text-ink/65">уход</span>
+          <span className="rounded bg-accent/10 px-2 py-2 text-accent">новая</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-7 rounded-[8px] border border-line bg-white/75 p-4">
+      <div className="grid gap-3">
+        <div className="rounded-[6px] border border-line bg-cream px-3 py-2 text-sm text-ink/55">Имя</div>
+        <div className="rounded-[6px] border border-line bg-cream px-3 py-2 text-sm text-ink/55">Телефон</div>
+        <div className="rounded-[6px] border border-line bg-cream px-3 py-2 text-sm text-ink/55">Услуга</div>
+        <div className="rounded-[6px] bg-accent px-3 py-3 text-center text-sm font-semibold text-white">
+          Записаться
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Process() {
   return (
-    <section className="bg-white px-5 py-16" id="flow">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">How it works / lead flow</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Visitor → Telegram → Google Sheets
-          </h2>
-          <p className="mt-4 leading-7 text-ink/65">
-            В MVP нет оплаты, личного кабинета и сложной CRM. Фокус на коммерчески полезном
-            минимуме: принять заявку, быстро показать ее владельцу и сохранить для учета.
+    <section className="section-pad bg-white/45" id="flow">
+      <div className="page-shell">
+        <div className="grid gap-10 lg:grid-cols-[0.62fr_1fr] lg:items-end">
+          <div>
+            <p className="eyebrow">Как это работает</p>
+            <h2 className="serif-display mt-4 text-5xl leading-[1.02] text-ink md:text-6xl">
+              3 шага от заявки до записи
+            </h2>
+          </div>
+          <p className="max-w-3xl text-lg leading-8 text-ink/65">
+            Клиент оставляет заявку на сайте, владелец сразу видит ее в
+            Telegram, а данные сохраняются в таблице для учета и follow-up.
           </p>
         </div>
-        <div className="grid gap-0 divide-y divide-ink/10 rounded-lg border border-ink/10 bg-cream overflow-hidden">
-          {steps.map((step, index) => (
-            <article className="grid gap-4 bg-white/55 p-5 sm:grid-cols-[86px_1fr] sm:p-6" key={step.title}>
-              <p className="text-3xl font-semibold tracking-tight text-moss">0{index + 1}</p>
-              <div>
-                <h3 className="text-xl font-semibold text-ink">{step.title}</h3>
-                <p className="mt-3 leading-7 text-ink/65">{step.text}</p>
-              </div>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {steps.map((step) => (
+            <article className="glass-panel rounded-[10px] p-6 transition duration-300 hover:-translate-y-1" key={step.number}>
+              <p className="serif-display text-5xl text-accent">{step.number}</p>
+              <h3 className="mt-5 text-xl font-semibold text-ink">{step.title}</h3>
+              <p className="mt-3 leading-7 text-ink/65">{step.text}</p>
+              <StepVisual type={step.visual} />
             </article>
           ))}
         </div>

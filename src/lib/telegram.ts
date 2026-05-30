@@ -46,7 +46,7 @@ export async function sendTelegramMessage(text: string): Promise<TelegramSendRes
       body: JSON.stringify({
         chat_id: chatId,
         text,
-        disable_web_page_preview: true,
+        link_preview_options: { is_disabled: true },
       }),
       signal: AbortSignal.timeout(10000),
     });

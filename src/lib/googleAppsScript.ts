@@ -1,10 +1,4 @@
-import type { LeadInput } from "@/lib/lead-schema";
-
-type LeadRecord = LeadInput & {
-  createdAt: string;
-  source: string;
-  status: "new";
-};
+import type { LeadRecord } from "@/lib/lead-schema";
 
 type GoogleAppsScriptResult =
   | {

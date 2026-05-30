@@ -6,16 +6,11 @@ const optionalText = z.preprocess(
 );
 
 export function getTodayDateString() {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    day: "2-digit",
-    month: "2-digit",
-    timeZone: "Europe/Moscow",
-    year: "numeric",
-  }).formatToParts(new Date());
-
-  const dateParts = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-
-  return `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 const optionalPreferredDate = optionalText
@@ -25,9 +20,15 @@ const optionalPreferredDate = optionalText
     "Нельзя выбрать дату раньше сегодняшней",
   );
 
+const phoneRegex = /^[\d\s\+\-\(\)]{5,20}$/;
+
 export const leadSchema = z.object({
   name: z.string({ required_error: "Укажите имя" }).trim().min(2, "Укажите имя"),
-  phone: z.string({ required_error: "Укажите телефон" }).trim().min(5, "Укажите телефон"),
+  phone: z
+    .string({ required_error: "Укажите телефон" })
+    .trim()
+    .min(5, "Укажите телефон")
+    .regex(phoneRegex, "Укажите корректный номер телефона"),
   service: z.string({ required_error: "Выберите услугу" }).trim().min(1, "Выберите услугу"),
   preferredDate: optionalPreferredDate,
   preferredTime: optionalText,
@@ -35,3 +36,9 @@ export const leadSchema = z.object({
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
+
+export type LeadRecord = LeadInput & {
+  createdAt: string;
+  source: string;
+  status: "new";
+};

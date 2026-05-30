@@ -25,7 +25,7 @@ const serviceOptions = [
 ];
 
 const fieldClass =
-  "min-h-12 rounded-md border border-ink/15 bg-cream px-4 outline-none transition duration-300 focus:border-accent focus:bg-white disabled:opacity-70";
+  "min-h-12 rounded-[6px] border border-line bg-white/75 px-4 outline-none transition duration-300 focus:border-accent focus:bg-white disabled:opacity-70";
 
 export function LeadForm() {
   const [form, setForm] = useState<LeadInput>(initialForm);
@@ -84,7 +84,7 @@ export function LeadForm() {
       }
 
       setStatus("success");
-      setMessage("Заявка принята: она отправлена владельцу и передана в таблицу для учета.");
+      setMessage("Заявка принята. Мы свяжемся с вами и подскажем следующий шаг.");
       setForm(initialForm);
       setErrors({});
     } catch {
@@ -94,35 +94,36 @@ export function LeadForm() {
   }
 
   return (
-    <section className="px-5 py-16" id="lead-form">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+    <section className="section-pad" id="lead-form">
+      <div className="page-shell grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
-            Demo form
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Проверьте путь заявки на примере
+          <p className="eyebrow">Заявка</p>
+          <h2 className="serif-display mt-4 text-5xl leading-[1.03] text-ink md:text-6xl">
+            Оставьте заявку на настройку системы
           </h2>
-          <p className="mt-4 leading-7 text-ink/65">
-            Форма показывает, какие данные собирает система перед отправкой в /api/lead.
-            Для реального бизнеса поля, услуги и тексты можно адаптировать под конкретный workflow.
+          <p className="mt-6 max-w-2xl leading-8 text-ink/65">
+            Расскажите, какая услуга или направление для вас главное. Мы
+            свяжемся, уточним детали и покажем, как система заявок подойдет
+            вашему салону или студии.
           </p>
-          <div className="mt-6 rounded-lg border border-ink/10 bg-white p-5 shadow-[0_18px_35px_rgba(31,33,31,0.04)]">
-            <p className="font-semibold text-ink">Portfolio demo / commercial MVP concept</p>
+
+          <div className="glass-panel mt-8 rounded-[10px] p-5">
+            <p className="font-semibold text-ink">Что происходит после отправки</p>
             <p className="mt-2 leading-7 text-ink/65">
-              Это не запись в реальный салон. Telegram and Google Sheets integrations are configured
-              through environment variables, поэтому токены и webhook URL не хранятся в коде.
+              Заявка приходит владельцу в Telegram и сохраняется в таблице,
+              чтобы контакт не потерялся после первого сообщения.
             </p>
           </div>
         </div>
 
-        <form
-          className="rounded-lg border border-white/70 bg-white p-5 shadow-soft sm:p-6"
-          noValidate
-          onSubmit={handleSubmit}
-        >
+        <form className="glass-panel rounded-[12px] p-5 sm:p-7" noValidate onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <p className="serif-display text-3xl text-ink">Запись в салон</p>
+            <p className="mt-1 text-sm text-ink/60">Оставьте контакты, мы свяжемся с вами</p>
+          </div>
+
           {isLoading ? (
-            <div className="mb-5 grid gap-3 rounded-md border border-accent/15 bg-accent/5 p-4" role="status">
+            <div className="mb-5 grid gap-3 rounded-[8px] border border-accent/20 bg-accent/10 p-4" role="status">
               <div className="loading-shimmer h-3 w-2/3 rounded-full bg-accent/15" />
               <div className="loading-shimmer h-3 w-1/2 rounded-full bg-accent/10" />
               <span className="sr-only">Заявка отправляется</span>
@@ -143,7 +144,6 @@ export function LeadForm() {
                 required
                 value={form.name}
               />
-              <span className="text-xs text-ink/45">Так владелец понимает, к кому обратиться.</span>
               {errors.name ? <span className="text-sm text-accent">{errors.name}</span> : null}
             </label>
 
@@ -161,7 +161,6 @@ export function LeadForm() {
                 type="tel"
                 value={form.phone}
               />
-              <span className="text-xs text-ink/45">Можно указать тестовый номер для проверки demo.</span>
               {errors.phone ? <span className="text-sm text-accent">{errors.phone}</span> : null}
             </label>
 
@@ -183,7 +182,6 @@ export function LeadForm() {
                   </option>
                 ))}
               </select>
-              <span className="text-xs text-ink/45">Список услуг можно заменить под ваш бизнес.</span>
               {errors.service ? <span className="text-sm text-accent">{errors.service}</span> : null}
             </label>
 
@@ -199,7 +197,6 @@ export function LeadForm() {
                 type="date"
                 value={form.preferredDate ?? ""}
               />
-              <span className="text-xs text-ink/45">Дата помогает быстрее предложить запись.</span>
               {errors.preferredDate ? <span className="text-sm text-accent">{errors.preferredDate}</span> : null}
             </label>
 
@@ -213,26 +210,24 @@ export function LeadForm() {
                 type="time"
                 value={form.preferredTime ?? ""}
               />
-              <span className="text-xs text-ink/45">Необязательное поле.</span>
             </label>
 
             <label className="grid gap-2 sm:col-span-2">
               <span className="text-sm font-medium text-ink">Комментарий</span>
               <textarea
-                className="min-h-28 resize-y rounded-md border border-ink/15 bg-cream px-4 py-3 outline-none transition duration-300 focus:border-accent focus:bg-white disabled:opacity-70"
+                className="min-h-28 resize-y rounded-[6px] border border-line bg-white/75 px-4 py-3 outline-none transition duration-300 focus:border-accent focus:bg-white disabled:opacity-70"
                 disabled={isLoading}
                 name="comment"
                 onChange={(event) => updateField("comment", event.target.value)}
-                placeholder="Например: удобно после 18:00"
+                placeholder="Например: хочу принимать заявки с сайта в Telegram"
                 value={form.comment ?? ""}
               />
-              <span className="text-xs text-ink/45">Комментарий помогает уточнить запрос до ответа клиенту.</span>
             </label>
           </div>
 
           {message ? (
             <p
-              className={`mt-4 rounded-md px-4 py-3 text-sm ${
+              className={`mt-5 rounded-[8px] px-4 py-3 text-sm ${
                 status === "success" ? "bg-moss/10 text-moss" : "bg-accent/10 text-accent"
               }`}
             >
@@ -241,11 +236,11 @@ export function LeadForm() {
           ) : null}
 
           <button
-            className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-accent px-6 font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-accent/90 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+            className="mt-6 inline-flex min-h-14 w-full items-center justify-center rounded-[6px] bg-accent px-6 font-semibold text-white shadow-panel transition duration-300 hover:-translate-y-0.5 hover:bg-berry active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
             disabled={isLoading}
             type="submit"
           >
-            {isLoading ? "Отправляем заявку..." : "Отправить demo-заявку"}
+            {isLoading ? "Отправляем заявку..." : "Оставить заявку"}
           </button>
         </form>
       </div>
