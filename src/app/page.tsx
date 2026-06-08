@@ -9,6 +9,7 @@ import { Packages } from "@/components/Packages";
 import { Process } from "@/components/Process";
 import { Solution } from "@/components/Solution";
 import { WhatOwnerReceives } from "@/components/WhatOwnerReceives";
+import { WhoFits } from "@/components/WhoFits";
 import { WorkExample } from "@/components/WorkExample";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
     <main>
       <Hero />
       <Benefits />
+      <WhoFits />
       <Process />
       <WhatOwnerReceives />
       <Features />

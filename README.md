@@ -74,6 +74,24 @@ Place final screenshots in `docs/screenshots/`:
 
 Current status: screenshot placeholders are documented in [docs/screenshots/README.md](docs/screenshots/README.md). Add real screenshots after testing the deployed demo.
 
+## Portfolio Case
+
+- Sales-ready case: [docs/portfolio-case.md](docs/portfolio-case.md)
+- Demo recording checklist: [docs/demo-flow.md](docs/demo-flow.md)
+
+Short positioning:
+
+```text
+Beauty Lead System is a reusable lead system for beauty businesses:
+landing page -> lead form -> Telegram notification -> Google Sheets lead tracking.
+```
+
+Commercial offer examples:
+
+- Start — from 7 000 ₽: form and Telegram notification.
+- Standard — from 15 000 ₽: landing page, form, Telegram, Google Sheets.
+- Pro — from 30 000 ₽: extended form, lead statuses, additional automation logic.
+
 ## Tech Stack
 
 Checked against `package.json`:
