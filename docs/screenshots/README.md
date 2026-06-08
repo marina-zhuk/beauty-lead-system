@@ -1,30 +1,37 @@
-# Screenshots
+# Скриншоты
 
-Place final portfolio screenshots in this folder before publishing the repository.
+Перед публикацией проекта или отправкой кейса клиенту сюда можно добавить финальные portfolio screenshots.
 
-Expected files:
+## Ожидаемые файлы
 
-- `landing-page.png` - first screen of the landing page.
-- `lead-form.png` - visible lead form with fields.
-- `success-state.png` - form after successful submission.
-- `telegram-notification.png` - Telegram message received by the owner.
-- `google-sheets-row.png` - created row in Google Sheets.
-- Optional: `demo-flow.mp4` or `demo-flow.gif` - short walkthrough from landing page to Telegram and Google Sheets proof.
+- `landing-page.png` — первый экран лендинга.
+- `lead-form.png` — видимая форма заявки с полями.
+- `success-state.png` — состояние формы после успешной отправки.
+- `telegram-notification.png` — Telegram-сообщение, которое получает владелец.
+- `google-sheets-row.png` — созданная строка в Google Sheets.
+- Опционально: `demo-flow.mp4` или `demo-flow.gif` — короткий walkthrough от лендинга до Telegram и Google Sheets.
 
-Do not include private phone numbers, real client names, bot tokens, webhook URLs, or private spreadsheet data in screenshots.
+В скриншотах нельзя показывать реальные номера клиентов, настоящие имена, bot tokens, webhook URLs, приватные ссылки на таблицы и личные данные аккаунтов.
 
-## Portfolio capture checklist
+## Уже есть
 
-1. Open the deployed landing page.
-2. Capture the first screen with the main CTA visible.
-3. Capture the lead form before submission.
-4. Submit safe demo data only.
-5. Capture the success state.
-6. Capture Telegram notification with demo data or masked phone number.
-7. Capture Google Sheets row with private URLs and account data hidden.
+- `telegram-notification.png`
+- `google-sheets-row.png`
 
-Recommended demo data:
+Эти изображения можно использовать как proof-of-work в README и portfolio case.
 
-- Name: `Тестовый клиент`
-- Phone: `+7 900 000-00-00`
-- Comment: `Тестовая заявка для демо`
+## Чеклист для capture
+
+1. Открыть deployed landing page.
+2. Сделать скриншот первого экрана с главным CTA.
+3. Сделать скриншот формы до отправки.
+4. Отправить только безопасные demo-данные.
+5. Сделать скриншот success state.
+6. Сделать скриншот Telegram notification с demo-данными или замаскированным телефоном.
+7. Сделать скриншот Google Sheets row, скрыв приватные URL и данные аккаунта.
+
+## Рекомендуемые demo-данные
+
+- Имя: `Тестовый клиент`
+- Телефон: `+7 900 000-00-00`
+- Комментарий: `Тестовая заявка для демо`
