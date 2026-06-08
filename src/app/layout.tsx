@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://beauty-lead-system.vercel.app"),
   title: "Система заявок для салона красоты | Beauty Lead System",
   description:
     "Лендинг, форма заявки, Telegram-уведомления и таблица учёта обращений для beauty-бизнеса. Подходит салонам, студиям и частным мастерам.",
