@@ -79,8 +79,8 @@ export function Hero() {
             </dl>
           </div>
 
-          <div className="relative min-h-[520px] min-w-0 lg:min-h-[720px]">
-            <div className="absolute inset-0 overflow-hidden rounded-bl-[180px] rounded-tl-[180px] border border-line bg-petal shadow-soft">
+          <div className="relative min-w-0 pt-6 md:min-h-[620px] md:pt-0 lg:min-h-[720px]">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[120px_12px_120px_12px] border border-line bg-petal shadow-soft md:absolute md:inset-0 md:min-h-0 md:rounded-bl-[180px] md:rounded-tl-[180px] md:rounded-br-none md:rounded-tr-none">
               <Image
                 alt="Премиальный beauty-визуал для сайта системы заявок"
                 className="object-cover object-center"
@@ -91,7 +91,7 @@ export function Hero() {
               />
             </div>
 
-            <div className="glass-panel absolute left-0 top-16 w-[min(84%,360px)] rounded-[10px] p-5 sm:left-3 lg:-left-5">
+            <div className="glass-panel relative z-10 mx-auto -mt-16 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:left-3 md:top-16 md:mx-0 md:mt-0 md:w-[min(84%,360px)] lg:-left-5">
               <p className="serif-display text-3xl text-ink">Запись в салон</p>
               <p className="mt-2 text-sm text-ink/60">Короткая форма без лишних шагов</p>
               <div className="mt-5 space-y-3">
@@ -106,7 +106,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="glass-panel absolute bottom-24 right-0 w-[min(76%,330px)] rounded-[10px] p-5">
+            <div className="glass-panel relative z-10 mx-auto mt-4 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:bottom-24 md:right-0 md:mx-0 md:mt-0 md:w-[min(76%,330px)]">
               <div className="flex items-center justify-between gap-3">
                 <p className="font-semibold text-ink">Telegram</p>
                 <span className="text-xs text-ink/45">сейчас</span>
