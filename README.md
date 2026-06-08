@@ -1,100 +1,115 @@
 # Beauty Lead System
 
-Commercial MVP / portfolio demo for a beauty salon, independent beauty master, or small service business.
+**Beauty Lead System** — портфолио-пример системы заявок для beauty-бизнеса: лендинг, форма заявки, Telegram-уведомления и сохранение обращений в Google Sheets.
 
-The project demonstrates a practical lead-capture flow:
+Это не “готовый продукт, который продаётся именно в таком виде”, а демонстрация формата услуги:
 
-```text
-Landing page -> lead form -> /api/lead -> Telegram notification -> Google Apps Script -> Google Sheets
-```
+> Я могу сделать похожую систему под ваш бизнес: с вашим дизайном, услугами, текстами, формой, уведомлениями и таблицей/CRM.
 
-## Live Demo
+## Live demo
 
-- Website: https://beauty-lead-system.vercel.app
-- Demo flow: submit the form and check the Telegram / Google Sheets result in screenshots.
+- Сайт: https://beauty-lead-system.vercel.app
+- GitHub: https://github.com/marina-zhuk/beauty-lead-system
 
-## Business Problem
-
-Small beauty businesses often receive leads from ads, landing pages, social media, messengers, and direct messages. Without a simple intake system, a salon owner can miss a new request, reply too late, or lose client details in scattered chats.
-
-The core business problem:
-
-- leads from the website or ads are easy to miss;
-- client details are not stored in one place;
-- the owner sees requests too late;
-- follow-up depends on manual copying between chats and notes.
-
-## Solution
-
-Beauty Lead System turns a simple landing page into a small lead automation flow.
-
-The landing page collects the request, the backend endpoint validates and processes the lead, Telegram notifies the owner, and Google Sheets stores the row for basic tracking.
-
-## How It Works
+## Как работает система
 
 ```text
-Visitor -> Lead Form -> /api/lead -> Telegram Notification -> Google Sheets Row
+Лендинг -> форма заявки -> /api/lead -> Telegram владельцу -> Google Apps Script -> Google Sheets
 ```
 
-1. A visitor opens the landing page.
-2. The visitor submits name, phone, service, preferred date/time, and comment.
-3. `POST /api/lead` validates the payload with Zod.
-4. The server sends a Telegram notification to the owner.
-5. The server sends the same lead to Google Apps Script.
-6. Google Apps Script writes the lead into Google Sheets.
+1. Клиент открывает лендинг.
+2. Выбирает услугу и оставляет контактные данные.
+3. Заявка проходит валидацию на backend.
+4. Владелец получает уведомление в Telegram.
+5. Данные сохраняются в Google Sheets для дальнейшей обработки.
 
-## Features
+## Что показывает этот проект
 
-- Responsive landing page
-- Lead form
-- API endpoint
-- Telegram notification
-- Google Sheets integration through Google Apps Script
-- Success/error states
-- Environment-based configuration
-- Portfolio/demo-ready structure
+- Умение собрать landing page под конкретную нишу.
+- Рабочий lead form с валидацией.
+- Интеграцию с Telegram Bot API.
+- Интеграцию с Google Sheets через Google Apps Script.
+- Понятный MVP-flow: заявка не теряется, владелец быстро видит обращение.
+- Возможность быстро адаптировать такую систему под другой бизнес.
 
-## User Flow
+## Для кого можно адаптировать
 
-The website visitor lands on the page, understands the offer, opens the form, fills in contact details and preferred service, submits the request, and sees a clear success or error state.
+- салоны красоты;
+- частные beauty-мастера;
+- студии маникюра / бровей / lash-услуг;
+- косметологи и массажисты;
+- фитнес-студии;
+- репетиторы и эксперты;
+- локальные сервисные бизнесы.
 
-## Owner Flow
+## Бизнес-проблема
 
-The business owner receives a Telegram message with the lead details, checks the new row in Google Sheets, and contacts the client from the provided phone number. The spreadsheet can be used as a lightweight manual lead tracker with statuses.
+У малого бизнеса заявки часто приходят из разных каналов: сайт, реклама, Direct, Telegram, WhatsApp, личные сообщения. Из-за этого владелец может поздно увидеть обращение, потерять контакт или забыть вернуться к клиенту.
 
-## Screenshots
+## Решение
 
-Place final screenshots in `docs/screenshots/`:
+Один простой поток обработки заявок:
 
-- `docs/screenshots/landing-page.png`
-- `docs/screenshots/lead-form.png`
-- `docs/screenshots/success-state.png`
-- `docs/screenshots/telegram-notification.png`
-- `docs/screenshots/google-sheets-row.png`
+- клиент оставляет заявку на сайте;
+- владелец сразу получает сообщение в Telegram;
+- контакт сохраняется в таблице;
+- администратор или владелец может вернуться к клиенту и довести заявку до записи.
 
-Current status: screenshot placeholders are documented in [docs/screenshots/README.md](docs/screenshots/README.md). Add real screenshots after testing the deployed demo.
+## Что входит в MVP
 
-## Portfolio Case
+- адаптивный landing page;
+- форма заявки;
+- API endpoint `POST /api/lead`;
+- валидация данных через Zod;
+- Telegram notification;
+- Google Sheets integration через Google Apps Script;
+- success/error состояния формы;
+- environment-based configuration;
+- rate limit для защиты от частого спама;
+- документация по setup, API, интеграциям и тестированию.
 
-- Sales-ready case: [docs/portfolio-case.md](docs/portfolio-case.md)
-- Demo recording checklist: [docs/demo-flow.md](docs/demo-flow.md)
+## Скриншоты работы
 
-Short positioning:
+### Telegram-уведомление
+
+![Пример Telegram-уведомления](public/screenshots/telegram-lead.png)
+
+### Заявка в Google Sheets
+
+![Пример строки в Google Sheets](public/screenshots/google-sheets-lead.png)
+
+Дополнительный чеклист скриншотов: [docs/screenshots/README.md](docs/screenshots/README.md)
+
+## Портфолио-кейс
+
+- Полное описание кейса: [docs/portfolio-case.md](docs/portfolio-case.md)
+- Чеклист demo-flow: [docs/demo-flow.md](docs/demo-flow.md)
+
+Короткое позиционирование:
 
 ```text
-Beauty Lead System is a reusable lead system for beauty businesses:
-landing page -> lead form -> Telegram notification -> Google Sheets lead tracking.
+Система заявок для малого бизнеса:
+лендинг -> форма -> Telegram-уведомление -> Google Sheets / CRM.
 ```
 
-Commercial offer examples:
+## Примеры коммерческих пакетов
 
-- Start — from 7 000 ₽: form and Telegram notification.
-- Standard — from 15 000 ₽: landing page, form, Telegram, Google Sheets.
-- Pro — from 30 000 ₽: extended form, lead statuses, additional automation logic.
+- **Start — от 7 000 ₽**: форма заявки и Telegram-уведомление.
+- **Standard — от 15 000 ₽**: лендинг, форма, Telegram, Google Sheets.
+- **Pro — от 30 000 ₽**: расширенная форма, статусы заявок, дополнительные сценарии автоматизации.
 
-## Tech Stack
+## Что можно изменить под клиента
 
-Checked against `package.json`:
+- нишу и визуальный стиль;
+- тексты лендинга;
+- услуги и поля формы;
+- Telegram-сообщение;
+- структуру Google Sheets;
+- статусы обработки заявок;
+- подключение CRM или других API;
+- домен и production deployment.
+
+## Tech stack
 
 - Next.js
 - React
@@ -107,19 +122,17 @@ Checked against `package.json`:
 - Google Sheets
 - Vercel
 
-## Environment Variables
+## Environment variables
 
-The project uses environment variables for integrations. Never commit real tokens, chat IDs, or webhook URLs.
+Проект использует переменные окружения для интеграций. Реальные токены, chat ID и webhook URL нельзя коммитить в репозиторий.
 
-Use `.env.example` as the public template and create `.env.local` for local development.
+Используйте `.env.example` как шаблон и создайте `.env.local` для локального запуска.
 
-| Variable | Required | Used by | Description |
-| --- | --- | --- | --- |
-| `TELEGRAM_BOT_TOKEN` | Yes | `src/lib/telegram.ts` | Telegram bot token for sending lead notifications. |
-| `TELEGRAM_CHAT_ID` | Yes | `src/lib/telegram.ts` | Telegram chat ID that receives lead notifications. |
-| `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` | Optional for local UI, required for Sheets sync | `src/lib/googleAppsScript.ts` | Deployed Google Apps Script Web App URL that writes leads to Google Sheets. |
+- `TELEGRAM_BOT_TOKEN` — Telegram bot token для отправки уведомлений.
+- `TELEGRAM_CHAT_ID` — chat ID, куда приходят заявки.
+- `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` — URL Google Apps Script Web App для записи заявок в Google Sheets.
 
-## Local Setup
+## Локальный запуск
 
 ```bash
 npm install
@@ -127,13 +140,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open:
+Открыть:
 
 ```text
 http://localhost:3000
 ```
 
-On Windows PowerShell in this workspace, use:
+На Windows PowerShell в этом workspace:
 
 ```bash
 npm.cmd run dev
@@ -141,51 +154,37 @@ npm.cmd run dev
 
 ## Deployment
 
-The project is ready for Vercel deployment.
+Проект готов к деплою на Vercel.
 
-Deployment notes:
+Базовый порядок:
 
-1. Push the repository to GitHub.
-2. Import the project in Vercel.
-3. Add environment variables in Vercel Project Settings.
-4. Deploy the project.
-5. Submit a test lead on the deployed URL.
-6. Confirm that Telegram receives the notification.
-7. Confirm that Google Sheets receives a new row.
-8. Redeploy after changing environment variables.
+1. Push в GitHub.
+2. Import project в Vercel.
+3. Добавить environment variables в Vercel Project Settings.
+4. Deploy.
+5. Отправить тестовую заявку.
+6. Проверить Telegram-уведомление.
+7. Проверить новую строку в Google Sheets.
 
-## Demo Limitations
+## Demo limitations
 
-- This is a portfolio MVP/demo, not a production CRM.
-- No production CRM authorization is implemented.
-- No anti-spam or captcha is implemented.
-- Google Sheets integration depends on a correctly configured Google Apps Script deployment.
-- Telegram delivery depends on a valid bot token, chat ID, and server access to Telegram API.
-- No payments, user accounts, calendar booking, or admin dashboard are included.
+Это portfolio MVP / demo, а не полноценная CRM.
 
-## What Can Be Adapted For Real Business
+В текущей версии нет:
 
-- Fields in the form
-- Business niche
-- Notification text
-- Google Sheets columns
-- CRM integration
-- Analytics
-- Domain and branding
-- Visual style and landing copy
-- Lead statuses and follow-up workflow
+- авторизации для администратора;
+- полноценной CRM-панели;
+- онлайн-оплаты;
+- календаря записей;
+- production captcha;
+- личного кабинета клиента.
 
-## Validation Checklist
+Эти функции можно добавить отдельно, если они нужны конкретному бизнесу.
 
-- [ ] Landing opens
-- [ ] Mobile layout works
-- [ ] Form validation works
-- [ ] Telegram message received
-- [ ] Google Sheets row created
-- [ ] Error state works
-- [ ] Build passes
-- [ ] No secrets in repo
+## Validation checklist
 
-## Portfolio Value
-
-This project shows a complete small-business MVP flow: landing page, lead form, backend endpoint, Telegram notification, and Google Sheets automation. It is designed as a practical portfolio case for a digital MVP specialist who builds lightweight automations for real business workflows.
+- `npm run lint`
+- `npm run build`
+- live demo opens correctly
+- test lead reaches Telegram
+- test lead appears in Google Sheets

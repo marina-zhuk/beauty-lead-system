@@ -1,69 +1,69 @@
-# Demo Flow
+# Demo flow
 
-Use this checklist when recording a portfolio demo, publishing the project, or showing the system to a potential client.
+Этот чеклист нужен для записи короткого portfolio demo, публикации проекта или показа системы потенциальному клиенту.
 
-## 1. Landing page
+## 1. Лендинг
 
-Show:
+Показать:
 
-- hero section;
-- business problem;
-- who the system fits;
-- what is included;
-- packages and CTA.
+- первый экран;
+- проблему бизнеса;
+- для кого подходит система;
+- что входит в решение;
+- пакеты и CTA.
 
-Say in one sentence:
+Короткая фраза для объяснения:
 
-> This is a small lead system for beauty businesses: the client submits a request, the owner receives it in Telegram, and the lead is saved to Google Sheets.
+> Это небольшая система заявок для beauty-бизнеса: клиент оставляет заявку на сайте, владелец получает её в Telegram, а контакт сохраняется в Google Sheets.
 
-## 2. Lead form
+## 2. Форма заявки
 
-Use safe demo data only:
+Использовать только безопасные демо-данные:
 
-- Name: `Тестовый клиент`
-- Phone: `+7 900 000-00-00`
-- Service: any service from the dropdown
-- Date/time: any future slot
-- Comment: `Тестовая заявка для демо`
+- Имя: `Тестовый клиент`
+- Телефон: `+7 900 000-00-00`
+- Услуга: любая услуга из списка
+- Дата/время: любая будущая дата
+- Комментарий: `Тестовая заявка для демо`
 
-Do not use real client phone numbers in screenshots or videos.
+Не использовать реальные телефоны клиентов в скриншотах и видео.
 
-## 3. Telegram proof
+## 3. Подтверждение в Telegram
 
-Show the received Telegram message with:
+Показать Telegram-сообщение, где видно:
 
-- name;
-- phone masked or demo-only;
-- service;
-- preferred date/time;
-- comment;
-- source/status if visible.
+- имя;
+- телефон, лучше тестовый или замаскированный;
+- услугу;
+- желаемую дату/время;
+- комментарий;
+- source/status, если отображается.
 
-## 4. Google Sheets proof
+## 4. Подтверждение в Google Sheets
 
-Show the new row in the spreadsheet:
+Показать новую строку в таблице:
 
-- created date;
-- name;
-- phone masked or demo-only;
-- service;
-- status `new`.
+- дата создания;
+- имя;
+- телефон, лучше тестовый или замаскированный;
+- услуга;
+- статус `new`.
 
-Hide private spreadsheet URLs and personal account data.
+Скрыть приватные ссылки на таблицу, данные аккаунта и любые реальные контакты.
 
-## 5. Closing sales angle
+## 5. Финальный акцент для клиента
 
-End the demo with three points:
+Закончить demo тремя тезисами:
 
-- the owner sees the lead immediately;
-- the contact is not lost in chats;
-- the same template can be adapted for another beauty business in a few days.
+- владелец видит заявку сразу;
+- контакт не теряется в чатах;
+- такой же шаблон можно адаптировать под другой бизнес за короткий срок.
 
-## Required files for portfolio
+## Файлы для портфолио
 
 - `docs/screenshots/landing-page.png`
 - `docs/screenshots/lead-form.png`
 - `docs/screenshots/success-state.png`
 - `docs/screenshots/telegram-notification.png`
 - `docs/screenshots/google-sheets-row.png`
-- optional: `docs/screenshots/demo-flow.mp4` or `docs/screenshots/demo-flow.gif`
+- опционально: `docs/screenshots/demo-flow.mp4` или `docs/screenshots/demo-flow.gif`
