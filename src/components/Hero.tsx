@@ -91,7 +91,7 @@ export function Hero() {
               />
             </div>
 
-            <div className="glass-panel relative z-10 mx-auto -mt-16 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:left-3 md:top-16 md:mx-0 md:mt-0 md:w-[min(84%,360px)] lg:-left-5">
+            <div className="glass-panel relative z-10 mx-auto mt-4 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:right-0 md:top-10 md:mx-0 md:mt-0 md:w-[min(62%,300px)] lg:right-0 xl:right-0">
               <p className="serif-display text-3xl text-ink">Запись в салон</p>
               <p className="mt-2 text-sm text-ink/60">Короткая форма без лишних шагов</p>
               <div className="mt-5 space-y-3">
