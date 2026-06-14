@@ -91,17 +91,17 @@ export function Hero() {
               />
             </div>
 
-            <div className="glass-panel relative z-10 mx-auto mt-4 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:right-0 md:top-10 md:mx-0 md:mt-0 md:w-[min(62%,300px)] lg:right-0 xl:right-0">
-              <p className="serif-display text-3xl text-ink">Запись в салон</p>
+            <div className="glass-panel relative z-10 mx-auto mt-4 w-[min(92%,380px)] rounded-[10px] p-5 md:absolute md:right-0 md:top-10 md:mx-0 md:mt-0 md:w-[260px] md:p-4 lg:right-0 xl:right-0">
+              <p className="serif-display text-2xl text-ink lg:text-3xl">Запись в салон</p>
               <p className="mt-2 text-sm text-ink/60">Короткая форма без лишних шагов</p>
-              <div className="mt-5 space-y-3">
+              <div className="mt-4 space-y-2.5">
                 {["Имя", "Телефон", "Услуга", "Комментарий"].map((field) => (
-                  <div className="h-11 rounded-[6px] border border-line bg-white/70 px-4 py-3 text-sm text-ink/45" key={field}>
+                  <div className="h-10 rounded-[6px] border border-line bg-white/70 px-4 py-2.5 text-sm text-ink/45" key={field}>
                     {field}
                   </div>
                 ))}
               </div>
-              <div className="mt-4 h-12 rounded-[6px] bg-accent px-4 py-3 text-center font-semibold text-white">
+              <div className="mt-3 h-11 rounded-[6px] bg-accent px-4 py-2.5 text-center font-semibold text-white">
                 Записаться
               </div>
             </div>
